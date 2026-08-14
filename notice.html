@@ -123,32 +123,68 @@
   </div>
 </div>
 <main>
+<!-- 공지사항 — 2026-08-14 보강.
+     ⚠ **공지 자체를 지어내지 않는다.** 실제로 발행한 공지가 없으므로 가짜 게시물을 만들지 않고,
+       지금 유효한 안내(연락 방법 · 상담 흐름 · 자주 찾는 문서)로 페이지를 채웠다.
+       실제 공지가 생기면 아래 '공지 목록' 자리에 항목을 추가하면 된다. -->
+
 <section class="subhero">
   <div class="subhero__dots" aria-hidden="true"></div>
   <div class="subhero__inner">
     <p class="subhero__crumb">고객지원 — 공지사항</p>
     <h1 class="subhero__title" data-anim data-anim-hero>Notice</h1>
-    <p class="subhero__kr" data-fade data-anim-hero>Announcements — 하오웹의 공지사항입니다.</p>
+    <p class="subhero__kr" data-fade data-anim-hero>서비스 변경과 운영 안내를 이곳에 정리합니다. 지금 필요하신 안내는 아래에서 바로 확인하실 수 있습니다.</p>
   </div>
 </section>
 
 <section class="sec" style="padding-bottom:96px">
   <div class="statement">
-    <p data-anim="lines">서비스 변경, 점검, 운영 관련 주요 안내를 이 페이지에 정리합니다. 공지가 등록되기 전에는 자주 묻는 질문과 제작 문의를 이용해 주세요.</p>
+    <p data-anim="lines">아직 등록된 공지가 없습니다. 등록 전이라도 문의는 언제든 받습니다. 아래에 지금 바로 확인하실 수 있는 안내를 모았습니다.</p>
   </div>
 </section>
 
-<section class="sec invert">
+<!-- 지금 유효한 안내 — 공지가 없는 동안 이 페이지가 빈손이 되지 않게 한다. -->
+<section class="sec invert sec--tight">
   <div class="container">
-    <div class="sechead">
-      <h2 class="sechead__title" data-anim="lines">공지사항을 준비하고 있습니다.</h2>
-      <p class="sechead__lead" data-anim="lines">서비스와 운영 관련 주요 안내부터 순차적으로 등록합니다. 공지 등록 전에는 FAQ와 제작 문의를 이용해 주세요.</p>
+    <div class="sechead sechead--full">
+      <h2 class="sechead__title" data-anim="lines">지금 확인하실 수 있는 안내.</h2>
+      <p class="sechead__lead" data-anim="lines">문의 전에 자주 찾으시는 것들입니다. 공지로 올릴 내용이 생기면 이 페이지 위쪽에 순서대로 등록합니다.</p>
     </div>
-    <p class="eyebrow" style="margin-top:56px">공지사항 준비중</p>
-    <div class="btns" style="margin-top:32px">
+    <div class="cardgrid">
+      <div class="card" data-fade>
+        <p class="card__t">문의는 전화와 이메일로 받습니다</p>
+        <p class="card__d">온라인 접수 기능은 준비 중입니다. 전화 02-0000-0000 또는 contact@haoweb.co.kr 로 연락 주시면 같은 내용으로 도와드립니다.</p>
+      </div>
+      <div class="card" data-fade data-delay="0.05">
+        <p class="card__t">무료 진단은 주소만 있으면 됩니다</p>
+        <p class="card__d">지금 홈페이지가 검색과 AI에 어떻게 보이는지 확인해 드립니다. 사이트 주소와 연락처만 남겨주시면 됩니다.</p>
+      </div>
+      <div class="card" data-fade data-delay="0.10">
+        <p class="card__t">제작비는 기준을 먼저 공개합니다</p>
+        <p class="card__d">페이지 수·기능 범위·운영 범위가 비용을 정합니다. 제작비 안내에서 기준을 보실 수 있습니다.</p>
+      </div>
+      <div class="card" data-fade data-delay="0.15">
+        <p class="card__t">자료가 없어도 상담할 수 있습니다</p>
+        <p class="card__d">정리된 원고나 기획서가 없어도 됩니다. 하시는 일과 필요한 것만 알려주시면 함께 정리합니다.</p>
+      </div>
+    </div>
+    <div class="btns" style="margin-top:48px">
       <a class="btn" href="faq.html" style="border-color:color-mix(in srgb,var(--bg) 30%,transparent);color:var(--bg)">자주 묻는 질문</a>
-      <a class="btn" href="inquiry.html" style="border-color:color-mix(in srgb,var(--bg) 30%,transparent);color:var(--bg)">제작 문의</a>
+      <a class="btn" href="price-guide.html" style="border-color:color-mix(in srgb,var(--bg) 30%,transparent);color:var(--bg)">제작비 안내</a>
+      <a class="btn" href="process.html" style="border-color:color-mix(in srgb,var(--bg) 30%,transparent);color:var(--bg)">제작 과정</a>
     </div>
+  </div>
+</section>
+
+<!-- 공지 목록 자리 — 실제 공지가 생기면 이 섹션 안에 .rows 항목을 추가한다.
+     지금은 목록이 비어 있다는 사실을 그대로 말한다(가짜 게시물을 만들지 않는다). -->
+<section class="sec sec--tight">
+  <div class="container">
+    <div class="sechead sechead--stack">
+      <h2 class="sechead__title" data-anim="lines">공지 목록.</h2>
+      <p class="sechead__lead" data-anim="lines">등록된 공지가 없습니다. 서비스 변경·점검·운영 관련 안내가 생기면 이곳에 순서대로 올립니다.</p>
+    </div>
+    <p class="note" style="margin-top:40px">중요한 변경 사항은 진행 중인 프로젝트의 담당자를 통해 먼저 안내드립니다.</p>
   </div>
 </section>
 

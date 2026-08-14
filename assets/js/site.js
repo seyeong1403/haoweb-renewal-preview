@@ -392,7 +392,9 @@
      두 요소 모두 없으면 즉시 반환하므로 다른 페이지에는 영향이 없다. */
   function initQuick() {
     var forms = [].slice.call(document.querySelectorAll('[data-quick]'));
-    var site = document.getElementById('fp-site');
+    // 받는 쪽은 두 곳이다 — 무료 진단(diagnosis) 과 무료 제안(free-proposal).
+    // 둘은 다른 서비스다: 진단은 검색·AI 노출을 보고, 제안은 제작 방향과 범위를 잡는다.
+    var site = document.getElementById('dg-site') || document.getElementById('fp-site');
     if (!forms.length && !site) return;
 
     forms.forEach(function (f) {
