@@ -164,18 +164,98 @@
   </div>
 </section>
 
-<!-- BEFORE DESIGN 「병원과 환자를 먼저 봅니다.」 섹션은 2026-08-14 세영 지시로 제거했다.
-     (WACUS 3블록 구간을 이식했던 .hospital-analysis 구간)
-     ⚠ 되살릴 수 있게 관련 자산은 지우지 않고 남겨 뒀다 —
-       CSS: assets/css/base.css 의 .hospital-analysis* 블록 (현재 사용처 없음)
-       JS : assets/js/site.js 의 initHospitalRows() ([data-hosp-row] 가 없으면 즉시 반환)
-       이미지: assets/img/hosp-a-space.jpg · hosp-b-search.jpg · hosp-c-structure.jpg -->
+<!-- 01 병원·진료과·타깃 환자 분석 — newsight.co.kr/medi-homepage '노하우 6줄' 구간 이식 (2026-08-14)
+     실측: 풀블리드 가로 밴드(h192) · 각 줄 위 1px 룰 · 작은 라벨 + 큰 제목 · hover 배경 .3s ease.
+     바꾼 것 — 밴드에 인덱스 번호와 설명 열을 두어 3열로 만들었고(원본은 라벨+제목 2단),
+     hover 배경만 있던 자리에 사이트 언어인 '좌→우 레드 룰'을 얹어 진입 모션을 만들었다.
+     문구는 세영님 원문을 문장 단위로 나눈 것이고 새로 지어낸 내용은 없다. -->
+<section class="sec">
+  <div class="container">
+    <p class="eyebrow">BEFORE DESIGN</p>
+    <div class="sechead sechead--stack" style="margin-top:28px">
+      <h2 class="sechead__title" data-anim="lines">병원·진료과·타깃 환자 분석.</h2>
+      <p class="sechead__lead" data-anim="lines">병원의 진료과·규모·강점과 현재 보유 자료를 확인하고, 주요 환자층이 무엇을 궁금해하는지 분석합니다.</p>
+    </div>
+
+    <div class="hospital-bands" data-hin>
+      <article class="hospital-band hin">
+        <span class="hospital-band__no">01</span>
+        <div>
+          <p class="hospital-band__label">Hospital</p>
+          <h3 class="hospital-band__t">병원 분석</h3>
+        </div>
+        <p class="hospital-band__d">병원의 진료과·규모·강점과 현재 보유 자료를 확인합니다.</p>
+      </article>
+      <article class="hospital-band hin">
+        <span class="hospital-band__no">02</span>
+        <div>
+          <p class="hospital-band__label">Patient</p>
+          <h3 class="hospital-band__t">타깃 환자 분석</h3>
+        </div>
+        <p class="hospital-band__d">주요 환자층이 무엇을 궁금해하는지 분석합니다.</p>
+      </article>
+      <article class="hospital-band hin">
+        <span class="hospital-band__no">03</span>
+        <div>
+          <p class="hospital-band__label">Competitor</p>
+          <h3 class="hospital-band__t">경쟁 병원 비교</h3>
+        </div>
+        <p class="hospital-band__d">같은 지역·진료과의 경쟁 병원 콘텐츠를 비교합니다.</p>
+      </article>
+      <article class="hospital-band hin">
+        <span class="hospital-band__no">04</span>
+        <div>
+          <p class="hospital-band__label">Priority</p>
+          <h3 class="hospital-band__t">우선순위 정리</h3>
+        </div>
+        <p class="hospital-band__d">진료과·의료진·증상 콘텐츠와 상담·예약 동선의 우선순위를 정리합니다.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 02 개원 일정 / 가오픈 대응 — bravomedi.co.kr 의 스크롤 성장 모션(AOS · growUp) 이식.
+     좌측 제목은 스크롤 중에도 붙어 있고, 우측 단계가 지나갈 때 세로 축이 아래로 차오른다.
+     단계는 원문에 있는 두 가지(먼저 공개 → 본 홈페이지 확장)뿐이다. 늘리지 않았다. -->
+<section class="sec invert">
+  <div class="container">
+    <div class="hospital-open">
+      <div class="hospital-open__aside">
+        <p class="eyebrow">개원 일정 대응</p>
+        <h2 class="sechead__title" style="margin-top:24px" data-anim="lines">개원 일정에 맞춰 필요한 것부터 엽니다.</h2>
+        <p class="sechead__lead" style="margin-top:24px;max-width:none" data-anim="lines">개원 일정이 촉박한 경우 필요한 정보를 먼저 공개하고, 본 홈페이지는 일정에 맞춰 확장합니다.</p>
+      </div>
+
+      <div class="hospital-open__steps" data-hin>
+        <div class="hospital-open__rail" aria-hidden="true"><i></i></div>
+        <div class="hospital-open__step hin">
+          <p class="hospital-open__phase">Phase 01 — 가오픈</p>
+          <h3 class="hospital-open__t">필요한 정보를 먼저 공개합니다.</h3>
+          <p class="hospital-open__d">개원 일정이 촉박한 경우 병원명·진료과·의료진·위치·진료시간·예약 등 필요한 정보를 먼저 공개합니다.</p>
+          <div class="hospital-chips">
+            <span class="hospital-chip">병원명</span>
+            <span class="hospital-chip">진료과</span>
+            <span class="hospital-chip">의료진</span>
+            <span class="hospital-chip">위치</span>
+            <span class="hospital-chip">진료시간</span>
+            <span class="hospital-chip">예약</span>
+          </div>
+        </div>
+        <div class="hospital-open__step hin">
+          <p class="hospital-open__phase">Phase 02 — 본 홈페이지</p>
+          <h3 class="hospital-open__t">진료 콘텐츠를 더해 확장합니다.</h3>
+          <p class="hospital-open__d">이후 진료 콘텐츠와 세부 페이지를 추가해 본 홈페이지로 확장합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="sec sec--wide">
   <div class="container">
     <div class="bighead">
       <h2 class="bighead__title" data-anim>Patient Journey</h2>
-      <p class="bighead__lead" data-anim="lines">증상 검색에서 예약까지, 환자가 밟는 확인 순서대로 페이지와 동선을 배치합니다.</p>
+      <p class="bighead__lead" data-anim="lines">환자가 실제로 정보를 찾는 순서에 맞춰 홈페이지를 구성합니다. 병원 내부 조직보다 환자의 탐색 흐름을 기준으로 콘텐츠를 연결합니다.</p>
     </div>
     <div class="timeline" style="margin-top:96px" data-timeline>
       <div class="timeline__line"><i></i></div>
@@ -184,19 +264,65 @@
       <div class="tstep"><span class="tstep__no">02</span>
         <h3 class="tstep__t">진료과 확인</h3><p class="tstep__d">우리 병원에서 진료가 가능한지 확인합니다.</p></div>
       <div class="tstep"><span class="tstep__no">03</span>
-        <h3 class="tstep__t">의료진 신뢰</h3><p class="tstep__d">의료진의 경력과 전문 분야를 봅니다.</p></div>
+        <h3 class="tstep__t">의료진 확인</h3><p class="tstep__d">의료진의 경력과 전문 분야를 봅니다.</p></div>
       <div class="tstep"><span class="tstep__no">04</span>
-        <h3 class="tstep__t">안내 확인</h3><p class="tstep__d">진료 시간·위치·주차·비용 안내를 확인합니다.</p></div>
+        <h3 class="tstep__t">진료정보 확인</h3><p class="tstep__d">진료 시간·위치·주차·비용 안내를 확인합니다.</p></div>
       <div class="tstep"><span class="tstep__no">05</span>
-        <h3 class="tstep__t">예약</h3><p class="tstep__d">전화 또는 온라인으로 예약합니다.</p></div>
+        <h3 class="tstep__t">상담·예약</h3><p class="tstep__d">전화 또는 온라인으로 상담하고 예약합니다.</p></div>
     </div>
   </div>
 </section>
 
+<!-- 03 병원 자체 운영 + 상담·예약 관리 — soijeong.com/cms-medical 이식.
+     실측: Basic Function 이 5열 × 2행 그리드(원형 아이콘 + 제목 + 2줄 설명)이고
+           Core Function 은 좌우 교차 블록, 모션은 WOW fadeInUp 1s + data-wow-delay 0.1s 간격.
+     바꾼 것 — 아이콘 자산을 새로 들이지 않으므로 마커를 번호와 1px 룰로 바꿨다.
+     ⚠ 기존 「정확한 정보와 편안한 동선」 섹션을 이 섹션으로 통합했다(같은 주제라 두 번 나오면 안 된다).
+       권장 정보구조·주요 기능 패널과 의료광고 관련 문구는 그대로 살렸다 — 지우지 말 것. -->
 <section class="sec invert">
   <div class="container">
-    <p class="eyebrow">콘텐츠 구성</p>
+    <p class="eyebrow">병원 운영</p>
     <div class="sechead sechead--stack" style="margin-top:28px">
+      <h2 class="sechead__title" data-anim="lines">자주 바뀌는 정보는 병원에서 직접 관리합니다.</h2>
+      <p class="sechead__lead" data-anim="lines">의료진·진료시간·휴진·공지·팝업·이벤트·비급여 정보처럼 자주 바뀌는 내용을 병원에서 관리하기 쉽게 구성합니다.</p>
+    </div>
+
+    <div class="hospital-cms" data-hin>
+      <div class="hospital-cms__grid">
+        <div class="hospital-cms__item hin"><p class="hospital-cms__no">01</p><p class="hospital-cms__t">의료진</p></div>
+        <div class="hospital-cms__item hin"><p class="hospital-cms__no">02</p><p class="hospital-cms__t">진료시간</p></div>
+        <div class="hospital-cms__item hin"><p class="hospital-cms__no">03</p><p class="hospital-cms__t">휴진 안내</p></div>
+        <div class="hospital-cms__item hin"><p class="hospital-cms__no">04</p><p class="hospital-cms__t">공지사항</p></div>
+        <div class="hospital-cms__item hin"><p class="hospital-cms__no">05</p><p class="hospital-cms__t">팝업</p></div>
+        <div class="hospital-cms__item hin"><p class="hospital-cms__no">06</p><p class="hospital-cms__t">이벤트</p></div>
+        <div class="hospital-cms__item hin"><p class="hospital-cms__no">07</p><p class="hospital-cms__t">비급여 정보</p></div>
+      </div>
+    </div>
+
+    <div class="sechead sechead--stack" style="margin-top:104px">
+      <h2 class="sechead__title" data-anim="lines">들어온 상담을 놓치지 않도록 연결합니다.</h2>
+      <p class="sechead__lead" data-anim="lines">홈페이지에서 발생한 상담과 예약도 확인하고, 필요한 경우 CRM·예약 시스템·알림 기능과 연결할 수 있도록 고려합니다.</p>
+    </div>
+
+    <div class="hospital-flow" data-hin>
+      <div class="hospital-flow__step hin">
+        <p class="hospital-flow__no">Step 01</p>
+        <p class="hospital-flow__t">홈페이지 상담·예약</p>
+        <p class="hospital-flow__d">홈페이지에서 상담과 예약이 발생합니다.</p>
+      </div>
+      <div class="hospital-flow__step hin">
+        <p class="hospital-flow__no">Step 02</p>
+        <p class="hospital-flow__t">병원에서 확인</p>
+        <p class="hospital-flow__d">접수된 상담과 예약을 병원에서 확인합니다.</p>
+      </div>
+      <div class="hospital-flow__step hin">
+        <p class="hospital-flow__no">Step 03</p>
+        <p class="hospital-flow__t">시스템 연결</p>
+        <p class="hospital-flow__d">필요한 경우 CRM·예약 시스템·알림 기능과 연결할 수 있도록 고려합니다.</p>
+      </div>
+    </div>
+
+    <div class="sechead sechead--stack" style="margin-top:104px">
       <h2 class="sechead__title" data-anim="lines">정확한 정보와 편안한 동선.</h2>
       <p class="sechead__lead" data-anim="lines">병원 홈페이지는 신뢰가 전부입니다. 과장 없이 정확한 진료 정보를 전달하고 어느 페이지에서든 예약으로 이어집니다. 치료 경험담·효능 단정 등 의료광고 기준에 어긋나는 표현은 쓰지 않습니다.</p>
     </div>
@@ -223,6 +349,127 @@
           <div><dt>공지 관리자 등록</dt></div>
           <div><dt>모바일 전화 바로 걸기</dt></div>
         </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 지역·진료과·증상·질문 기반 SEO / AEO / GEO — nodelix.kr 두 페이지 이식.
+     실측: 좌 대형 제목(둘째 줄만 포인트색) + 우 설명 박스(배경 3.5% + 1px 테두리),
+           그 아래 4열 라벨 카드 → 3열 카드. 라벨은 영문 + 포인트색.
+     ⚠ 원본에는 스크롤 모션이 없다(hover 전환뿐) — 지시대로 진입 모션을 새로 넣었다.
+       카드가 순차로 올라오고, 영문 라벨이 회색에서 레드로 점등된다.
+     ⚠ 효과를 보장하는 표현은 쓰지 않는다. 하단 주석은 다른 SEO 페이지와 같은 기준의 문장이다. -->
+<section class="sec">
+  <div class="container">
+    <p class="eyebrow">검색 구조</p>
+    <div class="hospital-search" style="margin-top:28px">
+      <div class="hospital-search__split">
+        <!-- ⚠ data-anim="lines" 를 쓰면 줄 분해가 <em> 을 잃어버려 레드 강조가 사라진다(base.css 18a 주석과 같은 함정). data-fade 를 쓴다. -->
+        <h2 class="hospital-search__t" data-fade>환자가 찾는 질문에서 <em>병원이 발견되도록</em> 구조를 만듭니다.</h2>
+        <div class="hospital-search__box" data-fade>
+          <p>병원명뿐 아니라 지역·진료과·증상·질문을 검색하는 환자가 필요한 정보를 찾을 수 있도록 콘텐츠를 구조화합니다. 검색엔진과 생성형 AI가 병원·진료과·콘텐츠의 관계를 이해하기 쉬운 형태로 정리합니다.</p>
+        </div>
+      </div>
+
+      <div class="hospital-search__grid" data-hin>
+        <div class="hospital-search__card hin">
+          <p class="hospital-search__en">Local</p>
+          <p class="hospital-search__ct">지역</p>
+          <p class="hospital-search__cd">지역과 병원·진료과 정보의 관계를 명확하게 구성합니다.</p>
+        </div>
+        <div class="hospital-search__card hin">
+          <p class="hospital-search__en">Specialty</p>
+          <p class="hospital-search__ct">진료과</p>
+          <p class="hospital-search__cd">진료과별 필요한 정보를 독립적으로 이해할 수 있게 정리합니다.</p>
+        </div>
+        <div class="hospital-search__card hin">
+          <p class="hospital-search__en">Symptom</p>
+          <p class="hospital-search__ct">증상</p>
+          <p class="hospital-search__cd">환자가 실제 검색하는 증상과 필요한 의료정보를 연결합니다.</p>
+        </div>
+        <div class="hospital-search__card hin">
+          <p class="hospital-search__en">Question</p>
+          <p class="hospital-search__ct">질문</p>
+          <p class="hospital-search__cd">환자가 자주 궁금해하는 내용을 질문·답변형 콘텐츠로 구성할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="hospital-search__grid hospital-search__grid--3" data-hin>
+        <div class="hospital-search__card hin">
+          <p class="hospital-search__en">SEO</p>
+          <p class="hospital-search__ct">검색엔진이 이해하는 구조</p>
+          <p class="hospital-search__cd">검색엔진이 병원과 진료 정보를 찾고 이해하기 쉬운 구조를 만듭니다.</p>
+        </div>
+        <div class="hospital-search__card hin">
+          <p class="hospital-search__en">AEO</p>
+          <p class="hospital-search__ct">질문에 답하는 콘텐츠</p>
+          <p class="hospital-search__cd">환자의 질문에 직접 답할 수 있는 콘텐츠 구조를 고려합니다.</p>
+        </div>
+        <div class="hospital-search__card hin">
+          <p class="hospital-search__en">GEO</p>
+          <p class="hospital-search__ct">AI가 이해하는 관계</p>
+          <p class="hospital-search__cd">생성형 AI가 병원·진료과·콘텐츠의 관계를 이해하기 쉬운 구조를 고려합니다.</p>
+        </div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:56px">하오웹은 검색 순위나 AI 노출을 보장하지 않습니다. 발견될 수 있는 구조를 갖추는 것까지가 제작의 역할입니다.</p>
+  </div>
+</section>
+
+<!-- 05 무료 홈페이지 진단 + 경쟁 병원 비교 + 개선 제안 — 병원 페이지의 핵심 CTA.
+     구조 이식: crossdesign.co.kr 의 STEP 행(번호 열 72px + 내용 열 + 태그 칩, 행 사이 1px 룰)
+                urdv.net 의 좌측 고정 브랜드 + 우측 카드 스택 → 좌측 제목·CTA 를 sticky 로.
+     모션: 행이 순차로 올라오고 확인 항목 칩이 뒤이어 스태거로 들어온다. -->
+<section class="sec invert sec--wide">
+  <div class="container">
+    <div class="hospital-diag">
+      <div class="hospital-diag__aside">
+        <p class="eyebrow">무료 진단</p>
+        <h2 class="sechead__title" style="margin-top:24px" data-anim="lines">현재 홈페이지부터 먼저 확인해보세요.</h2>
+        <p class="sechead__lead" style="margin-top:24px;max-width:none" data-anim="lines">기존 홈페이지가 있다면 지금 상태를 먼저 확인하고, 유지할 부분과 개선할 부분을 정리해 드립니다.</p>
+        <div class="btns" style="margin-top:40px">
+          <a class="btn btn--brand" href="free-proposal.html">무료 홈페이지 제안받기</a>
+          <a class="btn" href="inquiry.html">병원 홈페이지 상담</a>
+        </div>
+      </div>
+
+      <div class="hospital-diag__rows" data-hin>
+        <div class="hospital-diag__row hin">
+          <p class="hospital-diag__step">STEP<b>01</b><i aria-hidden="true"></i></p>
+          <div>
+            <h3 class="hospital-diag__t">현재 홈페이지 확인</h3>
+            <p class="hospital-diag__d">기존 홈페이지가 있다면 모바일 대응·정보구조·콘텐츠·예약 동선·검색 구조를 먼저 확인합니다.</p>
+            <div class="hospital-chips">
+              <span class="hospital-chip">모바일 대응</span>
+              <span class="hospital-chip">정보구조</span>
+              <span class="hospital-chip">콘텐츠</span>
+              <span class="hospital-chip">예약 동선</span>
+              <span class="hospital-chip">검색 구조</span>
+            </div>
+          </div>
+        </div>
+        <div class="hospital-diag__row hin">
+          <p class="hospital-diag__step">STEP<b>02</b><i aria-hidden="true"></i></p>
+          <div>
+            <h3 class="hospital-diag__t">경쟁 병원 비교</h3>
+            <p class="hospital-diag__d">같은 지역·진료과의 경쟁 병원 홈페이지와 비교합니다.</p>
+          </div>
+        </div>
+        <div class="hospital-diag__row hin">
+          <p class="hospital-diag__step">STEP<b>03</b><i aria-hidden="true"></i></p>
+          <div>
+            <h3 class="hospital-diag__t">유지·개선 정리</h3>
+            <p class="hospital-diag__d">유지할 부분과 개선할 부분을 정리합니다.</p>
+          </div>
+        </div>
+        <div class="hospital-diag__row hin">
+          <p class="hospital-diag__step">STEP<b>04</b><i aria-hidden="true"></i></p>
+          <div>
+            <h3 class="hospital-diag__t">개선 제안</h3>
+            <p class="hospital-diag__d">필요한 페이지·콘텐츠·기능·운영 범위를 제안합니다.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

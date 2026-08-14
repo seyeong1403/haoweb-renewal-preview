@@ -357,6 +357,33 @@
     });
   }
 
+  /* ---------- 병원 페이지 진입 모션 (2026-08-14) ----------
+     레퍼런스 이식: soijeong 의 WOW fadeInUp(1s, delay 0.1s 간격) + bravomedi 의 차오르는 축.
+     ⚠ `hospital.html` 전용. [data-hin] 이 없으면 즉시 반환하므로 다른 42개 페이지는 영향받지 않는다.
+     ⚠ 숨김(opacity:0)은 `html.js-hin` 이 붙었을 때만 걸린다 — JS 가 죽거나 관찰자가 빗나가도
+       섹션이 통째로 사라지지 않게 하기 위한 것이다(예전에 실제로 겪은 사고). */
+  function initHospital() {
+    var els = [].slice.call(document.querySelectorAll('[data-hin]'));
+    if (!els.length) return;
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.setAttribute('data-in', 'true'); });
+      return;
+    }
+
+    document.documentElement.classList.add('js-hin');
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.setAttribute('data-in', 'true');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+
+    els.forEach(function (el) { io.observe(el); });
+  }
+
   /* ---------- 리스트 행 마퀴 ---------- */
   function initMarquee() {
     document.querySelectorAll('[data-marquee]').forEach(function (m) {
@@ -647,6 +674,7 @@
     initConsultTab();
     initTimeline();
     initHospitalRows();
+    initHospital();
     initWork();
     initWorkView();
     initFaq();
