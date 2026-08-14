@@ -1540,15 +1540,15 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
    20. 병원 페이지 전용 (2026-08-14) — 레퍼런스 6곳 구조·모션 이식
    ------------------------------------------------------------
    무엇을 어디서 가져왔는지 (전부 CDP 로 실제 렌더를 실측했다):
-     newsight.co.kr/medi-homepage  → .hospital-bands  풀블리드 가로 밴드 6줄
+     newsight.co.kr/medi-homepage  → .biz-bands  풀블리드 가로 밴드 6줄
                                      (h192 · 상단 1px 룰 · 작은 라벨 + 큰 제목 · hover 배경 .3s)
-     bravomedi.co.kr               → .hospital-open   스크롤에 따라 차오르는 진행 축(AOS·growUp)
-     soijeong.com/cms-medical      → .hospital-cms    5열 기능 그리드 + 좌우 교차 블록
+     bravomedi.co.kr               → .biz-open   스크롤에 따라 차오르는 진행 축(AOS·growUp)
+     soijeong.com/cms-medical      → .biz-grid    5열 기능 그리드 + 좌우 교차 블록
                                      (WOW fadeInUp 1s + data-wow-delay 순차)
-     nodelix.kr/병원-seo-최적화     → .hospital-search 좌 대형 제목 + 우 statement 박스,
+     nodelix.kr/병원-seo-최적화     → .biz-search 좌 대형 제목 + 우 statement 박스,
                                      그 아래 4열 라벨 카드 → 3열 카드
-     crossdesign.co.kr             → .hospital-diag   STEP 행(번호 열 72px + 내용 열) + 태그 칩
-     urdv.net                      → .hospital-diag__aside  좌측 고정 + 우측 카드 스택
+     crossdesign.co.kr             → .biz-diag   STEP 행(번호 열 72px + 내용 열) + 태그 칩
+     urdv.net                      → .biz-diag__aside  좌측 고정 + 우측 카드 스택
 
    ⚠ 공통 컴포넌트(.card/.panel/.timeline/.sechead…)는 한 줄도 건드리지 않는다.
    ⚠ 크기는 전부 하오웹 토큰에서 파생한다. 레퍼런스 px 를 그대로 옮기지 않는다
@@ -1559,15 +1559,15 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
    ============================================================ */
 
 /* 색 — 다크 섹션과 .invert(밝은) 섹션 양쪽에서 같은 마크업이 쓰인다 */
-.hospital-bands, .hospital-open, .hospital-cms, .hospital-flow,
-.hospital-search, .hospital-diag, .hospital-incl {
+.biz-bands, .biz-open, .biz-grid, .biz-flow,
+.biz-search, .biz-diag, .biz-incl {
   --hline: var(--border);
   --hmuted: var(--muted);
   --hsoft: color-mix(in srgb, var(--fg) 5%, transparent);
 }
-.invert .hospital-bands, .invert .hospital-open, .invert .hospital-cms,
-.invert .hospital-flow, .invert .hospital-search, .invert .hospital-diag,
-.invert .hospital-incl {
+.invert .biz-bands, .invert .biz-open, .invert .biz-grid,
+.invert .biz-flow, .invert .biz-search, .invert .biz-diag,
+.invert .biz-incl {
   --hline: color-mix(in srgb, var(--bg) 22%, transparent);
   --hmuted: color-mix(in srgb, var(--bg) 62%, transparent);
   --hsoft: color-mix(in srgb, var(--bg) 4%, transparent);
@@ -1593,8 +1593,8 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
    원본은 풀블리드 밴드가 위에서 아래로 쌓이고, 각 줄 위에 1px 룰이 있다.
    원본 hover 는 배경색만 바뀌는데(.3s ease), 우리는 사이트 언어인
    '좌→우로 그어지는 레드 룰'을 얹어 진입에도 모션이 남게 했다. */
-.hospital-bands { margin-top: 72px; border-top: 1px solid var(--hline); }
-.hospital-band {
+.biz-bands { margin-top: 72px; border-top: 1px solid var(--hline); }
+.biz-band {
   position: relative;
   display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 420px);
   gap: 40px; align-items: start;
@@ -1604,257 +1604,257 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
 }
 /* 진입하면 좌→우로 룰이 그어진다. 색은 전경색이다 —
    4줄 전부를 레드로 그으면 "레드는 CTA·핵심에만" 원칙과 부딪힌다. 레드는 hover 에만 쓴다. */
-.hospital-band::after {
+.biz-band::after {
   content: ''; position: absolute; left: 0; top: -1px; height: 2px; width: 0;
   background: currentColor;
   transition: width .8s cubic-bezier(.16,1,.3,1), background-color .3s ease;
 }
 /* 룰은 밴드마다 순차로 그어진다 — 등장 순서(.hin nth-child)와 같은 간격 */
-[data-hin][data-in='true'] .hospital-band::after { width: 100%; }
-[data-hin][data-in='true'] .hospital-band:nth-child(1)::after { transition-delay: .15s; }
-[data-hin][data-in='true'] .hospital-band:nth-child(2)::after { transition-delay: .25s; }
-[data-hin][data-in='true'] .hospital-band:nth-child(3)::after { transition-delay: .35s; }
-[data-hin][data-in='true'] .hospital-band:nth-child(4)::after { transition-delay: .45s; }
+[data-hin][data-in='true'] .biz-band::after { width: 100%; }
+[data-hin][data-in='true'] .biz-band:nth-child(1)::after { transition-delay: .15s; }
+[data-hin][data-in='true'] .biz-band:nth-child(2)::after { transition-delay: .25s; }
+[data-hin][data-in='true'] .biz-band:nth-child(3)::after { transition-delay: .35s; }
+[data-hin][data-in='true'] .biz-band:nth-child(4)::after { transition-delay: .45s; }
 @media (hover: hover) {
-  .hospital-band:hover { background: var(--hsoft); }                      /* newsight 원본의 hover */
-  .hospital-band:hover::after { background: var(--brand); }
-  .hospital-band:hover .hospital-band__label { color: var(--brand); }
+  .biz-band:hover { background: var(--hsoft); }                      /* newsight 원본의 hover */
+  .biz-band:hover::after { background: var(--brand); }
+  .biz-band:hover .biz-band__label { color: var(--brand); }
 }
-.hospital-band__no {
+.biz-band__no {
   font-family: var(--font-en); font-size: var(--t-sm); font-weight: 700;
   letter-spacing: .06em; color: var(--hmuted); padding-top: .5em;
 }
-.hospital-band__label {
+.biz-band__label {
   font-size: var(--t-eyebrow); font-weight: 700; letter-spacing: .12em;
   text-transform: uppercase; color: var(--hmuted);
   transition: color .3s ease;
 }
-.hospital-band__t {
+.biz-band__t {
   margin-top: 14px;
   font-size: calc(var(--t-h3) * .58);         /* ≒31px — newsight 27px 자리, 우리 토큰 파생 */
   font-weight: 700; line-height: 1.32; letter-spacing: -.025em;
 }
-.hospital-band__d {
+.biz-band__d {
   font-size: var(--t-body); line-height: 1.8; color: var(--hmuted); padding-top: .35em;
 }
 
 /* ── B. 개원 일정 / 가오픈 (bravomedi 의 차오르는 축) ─────────
    좌측은 스크롤 중에도 붙어 있고, 우측 단계가 지나갈 때 세로 축이 차오른다. */
-.hospital-open { display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 80px; margin-top: 72px; }
-.hospital-open__aside { position: sticky; top: calc(var(--nav-h) + 56px); align-self: start; }
-.hospital-open__steps { position: relative; padding-left: 40px; }
-.hospital-open__rail {                        /* 세로 축 — 회색 바탕 */
+.biz-open { display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 80px; margin-top: 72px; }
+.biz-open__aside { position: sticky; top: calc(var(--nav-h) + 56px); align-self: start; }
+.biz-open__steps { position: relative; padding-left: 40px; }
+.biz-open__rail {                        /* 세로 축 — 회색 바탕 */
   position: absolute; left: 3px; top: 8px; bottom: 8px; width: 2px;
   background: var(--hline);
 }
-.hospital-open__rail i {                      /* 차오르는 부분 */
+.biz-open__rail i {                      /* 차오르는 부분 */
   position: absolute; inset: 0 0 auto 0; height: 0; background: var(--brand);
   transition: height 1.6s cubic-bezier(.16,1,.3,1) .2s;
 }
-.hospital-open__steps[data-in='true'] .hospital-open__rail i { height: 100%; }
-.hospital-open__step { position: relative; padding-bottom: 56px; }
-.hospital-open__step:last-child { padding-bottom: 0; }
-.hospital-open__step::before {                /* 축 위의 점 */
+.biz-open__steps[data-in='true'] .biz-open__rail i { height: 100%; }
+.biz-open__step { position: relative; padding-bottom: 56px; }
+.biz-open__step:last-child { padding-bottom: 0; }
+.biz-open__step::before {                /* 축 위의 점 */
   content: ''; position: absolute; left: -40px; top: 9px; width: 8px; height: 8px;
   border-radius: 50%; background: var(--hline);
   transition: background-color .5s ease, transform .5s ease;
 }
-.hospital-open__steps[data-in='true'] .hospital-open__step::before { background: var(--brand); transform: scale(1.35); }
-.hospital-open__steps[data-in='true'] .hospital-open__step:nth-child(2)::before { transition-delay: .45s; }
-.hospital-open__steps[data-in='true'] .hospital-open__step:nth-child(3)::before { transition-delay: .9s; }
-.hospital-open__phase {
+.biz-open__steps[data-in='true'] .biz-open__step::before { background: var(--brand); transform: scale(1.35); }
+.biz-open__steps[data-in='true'] .biz-open__step:nth-child(2)::before { transition-delay: .45s; }
+.biz-open__steps[data-in='true'] .biz-open__step:nth-child(3)::before { transition-delay: .9s; }
+.biz-open__phase {
   font-size: var(--t-eyebrow); font-weight: 700; letter-spacing: .12em;
   text-transform: uppercase; color: var(--hmuted);
 }
-.hospital-open__t {
+.biz-open__t {
   margin-top: 10px; font-size: calc(var(--t-h3) * .48);   /* ≒26px */
   font-weight: 700; line-height: 1.4; letter-spacing: -.02em;
 }
-.hospital-open__d { margin-top: 12px; font-size: var(--t-body); line-height: 1.8; color: var(--hmuted); max-width: 560px; }
+.biz-open__d { margin-top: 12px; font-size: var(--t-body); line-height: 1.8; color: var(--hmuted); max-width: 560px; }
 
 /* 먼저 공개하는 정보 — 칩. 버튼과 같은 라운드를 쓴다(--r-btn) */
-.hospital-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-.hospital-chip {
+.biz-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.biz-chip {
   font-size: var(--t-sm); font-weight: 600; line-height: 1;
   padding: 10px 14px; border: 1px solid var(--hline); border-radius: var(--r-btn);
   color: var(--hmuted);
   transition: color .3s ease, border-color .3s ease, transform .5s cubic-bezier(.16,1,.3,1), opacity .5s ease;
 }
-.js-hin [data-hin] .hospital-chip { opacity: 0; transform: translateY(10px); }
-[data-hin][data-in='true'] .hospital-chip { opacity: 1; transform: none; }
-[data-hin][data-in='true'] .hospital-chip:nth-child(1) { transition-delay: .30s; }
-[data-hin][data-in='true'] .hospital-chip:nth-child(2) { transition-delay: .37s; }
-[data-hin][data-in='true'] .hospital-chip:nth-child(3) { transition-delay: .44s; }
-[data-hin][data-in='true'] .hospital-chip:nth-child(4) { transition-delay: .51s; }
-[data-hin][data-in='true'] .hospital-chip:nth-child(5) { transition-delay: .58s; }
-[data-hin][data-in='true'] .hospital-chip:nth-child(6) { transition-delay: .65s; }
-[data-hin][data-in='true'] .hospital-chip:nth-child(7) { transition-delay: .72s; }
+.js-hin [data-hin] .biz-chip { opacity: 0; transform: translateY(10px); }
+[data-hin][data-in='true'] .biz-chip { opacity: 1; transform: none; }
+[data-hin][data-in='true'] .biz-chip:nth-child(1) { transition-delay: .30s; }
+[data-hin][data-in='true'] .biz-chip:nth-child(2) { transition-delay: .37s; }
+[data-hin][data-in='true'] .biz-chip:nth-child(3) { transition-delay: .44s; }
+[data-hin][data-in='true'] .biz-chip:nth-child(4) { transition-delay: .51s; }
+[data-hin][data-in='true'] .biz-chip:nth-child(5) { transition-delay: .58s; }
+[data-hin][data-in='true'] .biz-chip:nth-child(6) { transition-delay: .65s; }
+[data-hin][data-in='true'] .biz-chip:nth-child(7) { transition-delay: .72s; }
 @media (hover: hover) {
-  .hospital-chip:hover { color: var(--brand); border-color: var(--brand); }
+  .biz-chip:hover { color: var(--brand); border-color: var(--brand); }
 }
 
 /* ── C. 병원 자체 운영 그리드 (soijeong Basic Function) ───────
    원본은 5열 × 2행에 원형 아이콘 + 제목 + 2줄 설명이다.
    우리는 아이콘 자산을 새로 들이지 않으므로 마커를 번호와 1px 룰로 바꿨다. */
-.hospital-cms { margin-top: 64px; }
-.hospital-cms__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px 40px; }
+.biz-grid { margin-top: 64px; }
+.biz-grid__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px 40px; }
 /* 원본은 원형 아이콘이 셀 높이를 만든다. 아이콘 없이 그대로 옮기면 표처럼 납작해지므로
    위아래 여백으로 그 높이를 대신하고 항목명을 한 단 키웠다. */
-.hospital-cms__item {
+.biz-grid__item {
   padding: 30px 0 44px; border-top: 1px solid var(--hline);
   transition: border-color .35s ease;
 }
-.hospital-cms__no {
+.biz-grid__no {
   font-family: var(--font-en); font-size: var(--t-eyebrow); font-weight: 700;
   letter-spacing: .1em; color: var(--hmuted);
   transition: color .3s ease;
 }
-.hospital-cms__t {
+.biz-grid__t {
   margin-top: 16px; font-size: calc(var(--t-h3) * .42);   /* ≒23px */
   font-weight: 600; letter-spacing: -.02em;
 }
 @media (hover: hover) {
-  .hospital-cms__item:hover { border-color: var(--brand); }
-  .hospital-cms__item:hover .hospital-cms__no { color: var(--brand); }
+  .biz-grid__item:hover { border-color: var(--brand); }
+  .biz-grid__item:hover .biz-grid__no { color: var(--brand); }
 }
 
 /* ── D. 상담·예약 연결 흐름 (soijeong 교차 블록의 가로 흐름) ── */
-.hospital-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
-.hospital-flow__step {
+.biz-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+.biz-flow__step {
   position: relative; padding: 28px 26px 30px;
   border: 1px solid var(--hline); border-radius: var(--r-card);
   transition: border-color .35s ease;
 }
-.hospital-flow__step + .hospital-flow__step::before {   /* 사이 화살표 */
+.biz-flow__step + .biz-flow__step::before {   /* 사이 화살표 */
   content: ''; position: absolute; left: -18px; top: 50%; width: 12px; height: 1px;
   background: var(--hline);
 }
-.hospital-flow__no {
+.biz-flow__no {
   font-family: var(--font-en); font-size: var(--t-eyebrow); font-weight: 700;
   letter-spacing: .1em; color: var(--hmuted);
 }
-.hospital-flow__t { margin-top: 12px; font-size: var(--t-lead); font-weight: 600; letter-spacing: -.01em; }
-.hospital-flow__d { margin-top: 10px; font-size: var(--t-sm); line-height: 1.75; color: var(--hmuted); }
+.biz-flow__t { margin-top: 12px; font-size: var(--t-lead); font-weight: 600; letter-spacing: -.01em; }
+.biz-flow__d { margin-top: 10px; font-size: var(--t-sm); line-height: 1.75; color: var(--hmuted); }
 @media (hover: hover) {
-  .hospital-flow__step:hover { border-color: var(--brand); }
+  .biz-flow__step:hover { border-color: var(--brand); }
 }
 
 /* ── E. 검색 구조 (nodelix) ──────────────────────────────────
    상단은 좌 대형 제목 / 우 설명 박스(원본은 흰색 3.5% 배경 + 1px 테두리),
    그 아래 4열 라벨 카드 → 3열 카드로 좁혀 간다. */
-.hospital-search__split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: 64px; align-items: start; }
-.hospital-search__t { font-size: var(--t-h3); font-weight: 700; line-height: 1.16; letter-spacing: -.03em; }
-.hospital-search__t em { font-style: normal; color: var(--brand); }
-.hospital-search__box {
+.biz-search__split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: 64px; align-items: start; }
+.biz-search__t { font-size: var(--t-h3); font-weight: 700; line-height: 1.16; letter-spacing: -.03em; }
+.biz-search__t em { font-style: normal; color: var(--brand); }
+.biz-search__box {
   padding: 30px 32px; border: 1px solid var(--hline); border-radius: var(--r-card);
   background: var(--hsoft);
   font-size: var(--t-body); line-height: 1.85;
 }
-.hospital-search__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 64px; }
-.hospital-search__grid--3 { grid-template-columns: repeat(3, 1fr); margin-top: 20px; }
-.hospital-search__card {
+.biz-search__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 64px; }
+.biz-search__grid--3 { grid-template-columns: repeat(3, 1fr); margin-top: 20px; }
+.biz-search__card {
   padding: 28px 26px 32px; border: 1px solid var(--hline); border-radius: var(--r-card);
   transition: border-color .35s ease, background-color .35s ease;
 }
-.hospital-search__en {
+.biz-search__en {
   font-family: var(--font-en); font-size: var(--t-eyebrow); font-weight: 700;
   letter-spacing: .12em; text-transform: uppercase; color: var(--hmuted);
   transition: color .5s ease;
 }
 /* 라벨 점등 — 레드는 이 섹션의 핵심인 SEO·AEO·GEO 세 장에만 준다.
    앞의 네 장(지역·진료과·증상·질문)까지 레드로 켜면 일곱 개가 한꺼번에 붉어진다. */
-[data-hin][data-in='true'] .hospital-search__en { color: var(--fg); }
-.invert [data-hin][data-in='true'] .hospital-search__en { color: var(--bg); }
-[data-hin][data-in='true'] .hospital-search__grid--3 .hospital-search__en { color: var(--brand); }
-.hospital-search__ct { margin-top: 14px; font-size: var(--t-lead); font-weight: 600; letter-spacing: -.01em; }
-.hospital-search__cd { margin-top: 10px; font-size: var(--t-sm); line-height: 1.75; color: var(--hmuted); }
+[data-hin][data-in='true'] .biz-search__en { color: var(--fg); }
+.invert [data-hin][data-in='true'] .biz-search__en { color: var(--bg); }
+[data-hin][data-in='true'] .biz-search__grid--3 .biz-search__en { color: var(--brand); }
+.biz-search__ct { margin-top: 14px; font-size: var(--t-lead); font-weight: 600; letter-spacing: -.01em; }
+.biz-search__cd { margin-top: 10px; font-size: var(--t-sm); line-height: 1.75; color: var(--hmuted); }
 @media (hover: hover) {
-  .hospital-search__card:hover { border-color: var(--brand); background: var(--hsoft); }
+  .biz-search__card:hover { border-color: var(--brand); background: var(--hsoft); }
 }
 
 /* ── F. 무료 진단 (crossdesign STEP 행 + urdv 좌측 고정) ────── */
-.hospital-diag { display: grid; grid-template-columns: 440px minmax(0, 1fr); gap: 72px; }
-.hospital-diag__aside { position: sticky; top: calc(var(--nav-h) + 56px); align-self: start; }
+.biz-diag { display: grid; grid-template-columns: 440px minmax(0, 1fr); gap: 72px; }
+.biz-diag__aside { position: sticky; top: calc(var(--nav-h) + 56px); align-self: start; }
 /* 컬럼이 좁아 제목이 네 줄로 쪼개졌다 — 이 자리에서만 한 단 낮춘다(공통 .sechead 는 건드리지 않는다) */
-.hospital-diag__aside .sechead__title { font-size: calc(var(--t-h3) * .78); }
+.biz-diag__aside .sechead__title { font-size: calc(var(--t-h3) * .78); }
 /* ⚠ 밝은 섹션에서 .btn 은 글자색이 var(--fg) 라 흰 바탕에 흰 글자가 된다.
    사이트의 기존 처방은 조각에서 인라인으로 색을 주는 것인데(칼럼 4편이 그렇다),
    여기서는 같은 값을 이 섹션 범위 규칙으로 둔다. 공통 .btn 정의는 건드리지 않는다. */
-.invert .hospital-diag .btn:not(.btn--brand) {
+.invert .biz-diag .btn:not(.btn--brand) {
   color: var(--bg); border-color: color-mix(in srgb, var(--bg) 30%, transparent);
 }
-.invert .hospital-diag .btn:not(.btn--brand):hover {
+.invert .biz-diag .btn:not(.btn--brand):hover {
   background: var(--bg); color: var(--fg); border-color: var(--bg);
 }
-.hospital-diag__rows { border-top: 1px solid var(--hline); }
-.hospital-diag__row {
+.biz-diag__rows { border-top: 1px solid var(--hline); }
+.biz-diag__row {
   display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 24px;
   padding: 34px 0 38px; border-bottom: 1px solid var(--hline);
 }
-.hospital-diag__step {
+.biz-diag__step {
   font-family: var(--font-en); font-size: var(--t-eyebrow); font-weight: 700;
   letter-spacing: .1em; color: var(--hmuted); line-height: 1.6;
 }
-.hospital-diag__step b { display: block; font-size: var(--t-sm); color: var(--brand); }
-.hospital-diag__step i {                       /* 번호 밑 짧은 선 — 원본과 같은 자리 */
+.biz-diag__step b { display: block; font-size: var(--t-sm); color: var(--brand); }
+.biz-diag__step i {                       /* 번호 밑 짧은 선 — 원본과 같은 자리 */
   display: block; width: 18px; height: 2px; margin-top: 10px; background: var(--hline);
 }
-.hospital-diag__t { font-size: calc(var(--t-h3) * .45); font-weight: 700; letter-spacing: -.02em; line-height: 1.4; }
-.hospital-diag__d { margin-top: 12px; font-size: var(--t-body); line-height: 1.8; color: var(--hmuted); max-width: 640px; }
+.biz-diag__t { font-size: calc(var(--t-h3) * .45); font-weight: 700; letter-spacing: -.02em; line-height: 1.4; }
+.biz-diag__d { margin-top: 12px; font-size: var(--t-body); line-height: 1.8; color: var(--hmuted); max-width: 640px; }
 
 @media (max-width: 1180px) {
-  .hospital-band { grid-template-columns: 48px minmax(0, 1fr); gap: 24px; }
-  .hospital-band__d { grid-column: 2; padding-top: 4px; }
-  .hospital-open, .hospital-diag { grid-template-columns: 1fr; gap: 48px; }
-  .hospital-open__aside, .hospital-diag__aside { position: static; }
-  .hospital-cms__grid { grid-template-columns: repeat(3, 1fr); gap: 1px 32px; }
-  .hospital-search__split { grid-template-columns: 1fr; gap: 32px; }
-  .hospital-search__grid { grid-template-columns: repeat(2, 1fr); }
-  .hospital-search__grid--3 { grid-template-columns: repeat(3, 1fr); }
-  .hospital-flow { grid-template-columns: 1fr; gap: 16px; }
-  .hospital-flow__step + .hospital-flow__step::before { left: 50%; top: -10px; width: 1px; height: 6px; }
+  .biz-band { grid-template-columns: 48px minmax(0, 1fr); gap: 24px; }
+  .biz-band__d { grid-column: 2; padding-top: 4px; }
+  .biz-open, .biz-diag { grid-template-columns: 1fr; gap: 48px; }
+  .biz-open__aside, .biz-diag__aside { position: static; }
+  .biz-grid__grid { grid-template-columns: repeat(3, 1fr); gap: 1px 32px; }
+  .biz-search__split { grid-template-columns: 1fr; gap: 32px; }
+  .biz-search__grid { grid-template-columns: repeat(2, 1fr); }
+  .biz-search__grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .biz-flow { grid-template-columns: 1fr; gap: 16px; }
+  .biz-flow__step + .biz-flow__step::before { left: 50%; top: -10px; width: 1px; height: 6px; }
 }
 @media (max-width: 900px) {
-  .hospital-bands { margin-top: 48px; }
-  .hospital-band { padding: 32px 4px; }
-  .hospital-cms__grid { grid-template-columns: repeat(2, 1fr); }
-  .hospital-search__grid, .hospital-search__grid--3 { grid-template-columns: 1fr; }
-  .hospital-diag__row { grid-template-columns: 1fr; gap: 12px; }
-  .hospital-diag__step i { display: none; }
-  .hospital-open__steps { padding-left: 28px; }
-  .hospital-open__step::before { left: -28px; }
+  .biz-bands { margin-top: 48px; }
+  .biz-band { padding: 32px 4px; }
+  .biz-grid__grid { grid-template-columns: repeat(2, 1fr); }
+  .biz-search__grid, .biz-search__grid--3 { grid-template-columns: 1fr; }
+  .biz-diag__row { grid-template-columns: 1fr; gap: 12px; }
+  .biz-diag__step i { display: none; }
+  .biz-open__steps { padding-left: 28px; }
+  .biz-open__step::before { left: -28px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .js-hin [data-hin] .hin, .js-hin [data-hin] .hospital-chip { opacity: 1; transform: none; }
-  .hospital-band::after { transition: none; }
-  .hospital-open__rail i { transition: none; }
+  .js-hin [data-hin] .hin, .js-hin [data-hin] .biz-chip { opacity: 1; transform: none; }
+  .biz-band::after { transition: none; }
+  .biz-open__rail i { transition: none; }
 }
 
 /* ── G. 히어로 CTA (2026-08-14) ─────────────────────────────
    서브페이지 히어로에는 원래 버튼이 없다. 병원 페이지만 예외다 —
    무료 진단이 페이지 하단(7,700px 지점)에만 있어서 대부분 보기 전에 이탈했다.
    전환이 목적인 페이지이므로 첫 화면에서 한 번 제안한다. */
-.hospital-herocta { margin-top: 44px; }
-.hospital-herocta .note { margin-top: 18px; }
+.biz-herocta { margin-top: 44px; }
+.biz-herocta .note { margin-top: 18px; }
 
 /* ── H. 기본 제공 범위 (bravomedi 12가지 · newsight 20가지 혜택 구간) ──
    원본은 번호를 단 항목을 격자에 늘어놓아 "이만큼이 기본"이라는 인상을 만든다.
    같은 방식이되 항목마다 한 줄 설명을 붙여 목록이 아니라 약속으로 읽히게 했다.
-   ⚠ CMS 그리드(.hospital-cms__grid)와 형태가 겹치지 않도록 열 수와 밀도를 다르게 잡았다. */
-.hospital-incl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 48px; margin-top: 64px; }
-.hospital-incl__item { padding: 28px 0 32px; border-top: 1px solid var(--hline); }
-.hospital-incl__head { display: flex; align-items: baseline; gap: 12px; }
-.hospital-incl__no {
+   ⚠ CMS 그리드(.biz-grid__grid)와 형태가 겹치지 않도록 열 수와 밀도를 다르게 잡았다. */
+.biz-incl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 48px; margin-top: 64px; }
+.biz-incl__item { padding: 28px 0 32px; border-top: 1px solid var(--hline); }
+.biz-incl__head { display: flex; align-items: baseline; gap: 12px; }
+.biz-incl__no {
   font-family: var(--font-en); font-size: var(--t-eyebrow); font-weight: 700;
   letter-spacing: .1em; color: var(--hmuted);
 }
-.hospital-incl__t { font-size: var(--t-lead); font-weight: 600; letter-spacing: -.01em; }
-.hospital-incl__d { margin-top: 10px; font-size: var(--t-sm); line-height: 1.75; color: var(--hmuted); }
+.biz-incl__t { font-size: var(--t-lead); font-weight: 600; letter-spacing: -.01em; }
+.biz-incl__d { margin-top: 10px; font-size: var(--t-sm); line-height: 1.75; color: var(--hmuted); }
 
 @media (max-width: 1180px) {
-  .hospital-incl { grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
+  .biz-incl { grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
 }
 @media (max-width: 900px) {
-  .hospital-incl { grid-template-columns: 1fr; }
-  .hospital-herocta { margin-top: 32px; }
+  .biz-incl { grid-template-columns: 1fr; }
+  .biz-herocta { margin-top: 32px; }
 }
