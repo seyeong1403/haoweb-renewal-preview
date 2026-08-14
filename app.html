@@ -123,39 +123,94 @@
   </div>
 </div>
 <main>
+<!-- 앱 제작 — 2026-08-14 전면 재구성 (목적: 문의 전환).
+     레퍼런스(하오웹 리서치 PDF, README 27번)
+       alphaca      **MVP 개념 교육** — 핵심 기능 우선순위, 불필요한 기능 덜어내기
+       codeventer   **기획서 없이도 상담** — 진입장벽을 낮추는 콘텐츠
+       dpectrum     진행 상황 공유 · **산출물과 소유권 명시**(외주 불안 해소)
+       mobpa        전담 담당·QA·출시 후 유지관리를 과정으로 보여주기
+       apppro       정부지원사업 연계
+     ⚠ 우리 실제 범위를 넘지 않는다. 이 페이지의 기본은 예전부터 **웹앱·하이브리드**이고
+       네이티브·대규모 플랫폼은 별도 범위다(아래 패널 그대로 유지).
+       그래서 병원·쇼핑몰처럼 '기능 9항목 기본 제공'을 쓰지 않고 **범위와 진행 방식**으로 풀었다.
+     ⚠ 가져오지 않은 것: 개발 기간·금액 공개(우리 기준이 없다), 노코드 저가 포지셔닝. -->
+
 <section class="subhero">
   <div class="subhero__dots" aria-hidden="true"></div>
   <div class="subhero__inner">
     <p class="subhero__crumb">홈페이지 제작 — 앱 제작</p>
     <h1 class="subhero__title" data-anim data-anim-hero>App</h1>
-    <p class="subhero__kr" data-fade data-anim-hero>Service flow and web connection — 서비스 흐름·사용자 기능·웹 연결을 함께 설계합니다.</p>
+    <p class="subhero__kr" data-fade data-anim-hero>처음부터 다 만들지 않습니다. 꼭 필요한 기능부터 세워 쓰면서 키웁니다.</p>
+    <div class="biz-herocta" data-fade data-anim-hero data-delay=".12">
+      <div class="btns">
+        <a class="btn btn--brand" href="inquiry.html">아이디어 단계 상담</a>
+        <a class="btn" href="free-proposal.html">무료 제안받기</a>
+      </div>
+      <p class="note">기획서가 없어도 됩니다. 하려는 일과 대상만 알려주세요.</p>
+    </div>
   </div>
 </section>
 
-<section class="sec" style="padding-bottom:96px">
-  <div class="statement">
-    <p data-anim="lines">하오웹은 홈페이지와 연결되는 웹앱·하이브리드 앱을 기본 방향으로 합니다. 반복해서 쓰는 흐름을 먼저 정리하고, 반응형 웹 기반으로 만들어 홈페이지 콘텐츠와 연동합니다.</p>
-  </div>
-</section>
-
-<section class="sec invert sec--tight">
+<section class="sec sec--tight">
   <div class="container">
     <div class="sechead sechead--full">
-      <h2 class="sechead__title" data-anim="lines">이런 서비스에 필요합니다.</h2>
-      <p class="sechead__lead" data-anim="lines">반복 사용 기능이 필요하거나 웹과 앱을 함께 운영하려는 서비스. 동선을 먼저 정리하고 웹 기반으로 만듭니다.</p>
+      <h2 class="sechead__title" data-anim="lines">앱을 만들려는데, 어디부터 물어야 할지 모르겠습니다.</h2>
+      <p class="sechead__lead" data-anim="lines">견적은 업체마다 몇 배씩 다르고, 무엇을 빼야 할지 판단할 기준이 없습니다. 아래에 해당한다면 기능부터 정리할 때입니다.</p>
     </div>
-    <div class="cardgrid cardgrid--2">
+    <div class="cardgrid">
       <div class="card" data-fade>
-        <p class="card__t">예약·주문 등 반복 사용 기능이 필요한 서비스</p>
+        <p class="card__t">견적이 업체마다 너무 다릅니다</p>
+        <p class="card__d">같은 설명을 했는데 금액 차이가 커서 무엇이 맞는지 모릅니다.</p>
       </div>
       <div class="card" data-fade data-delay="0.05">
-        <p class="card__t">회원·알림 중심의 서비스</p>
+        <p class="card__t">기획서가 없습니다</p>
+        <p class="card__d">머릿속에는 있는데 문서로 정리된 것이 없어 상담이 막힙니다.</p>
       </div>
       <div class="card" data-fade data-delay="0.10">
-        <p class="card__t">웹과 앱을 함께 운영하려는 서비스</p>
+        <p class="card__t">기능을 다 넣고 싶습니다</p>
+        <p class="card__d">필요해 보이는 걸 모두 넣으면 비용과 기간이 함께 불어납니다.</p>
       </div>
       <div class="card" data-fade data-delay="0.15">
-        <p class="card__t">내부 업무용 도구가 필요한 기업</p>
+        <p class="card__t">만들고 나서 안 쓰게 될까 걱정입니다</p>
+        <p class="card__d">검증 없이 크게 만들면 고칠 여력이 남지 않습니다.</p>
+      </div>
+      <div class="card" data-fade data-delay="0.20">
+        <p class="card__t">진행 상황이 보이지 않습니다</p>
+        <p class="card__d">개발이 시작되면 무슨 일이 일어나는지 알기 어렵습니다.</p>
+      </div>
+      <div class="card" data-fade data-delay="0.25">
+        <p class="card__t">결과물이 누구 것인지 불분명합니다</p>
+        <p class="card__d">디자인과 소스, 계정의 소유가 정리되지 않은 채 끝나는 경우가 있습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 작게 시작하기 — alphaca 의 MVP 교육형 콘텐츠.
+     이 업종에서 우리가 할 수 있는 가장 정직한 이야기이기도 하다.
+     대규모 개발이 아니라 '검증 가능한 크기로 시작'하는 것이 우리 범위와도 맞다. -->
+<section class="sec invert">
+  <div class="container">
+    <p class="eyebrow">시작 방식</p>
+    <div class="sechead sechead--stack" style="margin-top:28px">
+      <h2 class="sechead__title" data-anim="lines">전부 만들기 전에, 되는지부터 확인합니다.</h2>
+      <p class="sechead__lead" data-anim="lines">기능을 다 넣은 앱은 비싸고 오래 걸리며, 정작 쓰이지 않는 기능이 절반입니다. 핵심 하나가 실제로 쓰이는지 확인한 뒤 그 위에 더하는 편이 빠릅니다.</p>
+    </div>
+    <div class="cols" style="margin-top:80px">
+      <div class="col" data-fade>
+        <div class="rule"></div>
+        <div class="col__label"><span>핵심 하나</span></div>
+        <p class="col__body">이 앱이 없으면 안 되는 기능 하나를 정합니다. 나머지는 그다음입니다.</p>
+      </div>
+      <div class="col" data-fade data-delay=".08">
+        <div class="rule"></div>
+        <div class="col__label"><span>덜어내기</span></div>
+        <p class="col__body">지금 없어도 되는 기능을 골라 다음 단계로 미룹니다. 비용과 기간이 함께 줄어듭니다.</p>
+      </div>
+      <div class="col" data-fade data-delay=".16">
+        <div class="rule"></div>
+        <div class="col__label"><span>쓰면서 키우기</span></div>
+        <p class="col__body">실제 사용을 보고 다음에 만들 것을 정합니다. 추측으로 만들지 않습니다.</p>
       </div>
     </div>
   </div>
@@ -165,18 +220,18 @@
   <div class="container">
     <div class="bighead">
       <h2 class="bighead__title" data-anim>Design Steps</h2>
-      <p class="bighead__lead" data-anim="lines">제작 전에 정리하는 다섯 가지. 기능을 늘리기 전에 무엇을 먼저 만들지, 사용자가 어떻게 움직일지 정합니다.</p>
+      <p class="bighead__lead" data-anim="lines">화면을 그리기 전에 무엇을 하는 서비스인지부터 정합니다. 순서대로 좁혀 갑니다.</p>
     </div>
     <div class="timeline" style="margin-top:96px" data-timeline>
       <div class="timeline__line"><i></i></div>
       <div class="tstep"><span class="tstep__no">01</span>
-        <h3 class="tstep__t">주요 기능</h3><p class="tstep__d">핵심 기능을 우선순위로 정합니다. 전부가 아니라 먼저 필요한 것부터.</p></div>
+        <h3 class="tstep__t">서비스 정의</h3><p class="tstep__d">누가 무엇을 하러 오는 앱인지 정합니다.</p></div>
       <div class="tstep"><span class="tstep__no">02</span>
-        <h3 class="tstep__t">서비스 흐름</h3><p class="tstep__d">가입부터 핵심 행동까지의 흐름을 그립니다.</p></div>
+        <h3 class="tstep__t">핵심 기능</h3><p class="tstep__d">없으면 안 되는 기능과 미룰 기능을 나눕니다.</p></div>
       <div class="tstep"><span class="tstep__no">03</span>
-        <h3 class="tstep__t">화면 목록</h3><p class="tstep__d">필요한 화면을 목록으로 확정합니다.</p></div>
+        <h3 class="tstep__t">화면 흐름</h3><p class="tstep__d">첫 실행부터 목적 달성까지의 순서를 잡습니다.</p></div>
       <div class="tstep"><span class="tstep__no">04</span>
-        <h3 class="tstep__t">사용자 동선</h3><p class="tstep__d">화면 사이의 이동과 반복 사용 경로를 설계합니다.</p></div>
+        <h3 class="tstep__t">디자인</h3><p class="tstep__d">화면을 그리고 실제로 눌러 보며 확인합니다.</p></div>
       <div class="tstep"><span class="tstep__no">05</span>
         <h3 class="tstep__t">운영 기능</h3><p class="tstep__d">관리자에서 무엇을 관리할지 정합니다.</p></div>
     </div>
@@ -187,7 +242,7 @@
   <div class="container">
     <div class="sechead sechead--stack">
       <h2 class="sechead__title" data-anim="lines">기본으로 만드는 것과, 별도로 진행하는 것.</h2>
-      <p class="sechead__lead" data-anim="lines">기본은 홈페이지와 연결되는 웹앱·하이브리드 앱입니다. 완전한 네이티브 앱이나 대규모 플랫폼은 별도 범위로 검토합니다.</p>
+      <p class="sechead__lead" data-anim="lines">기본은 홈페이지와 연결되는 웹앱·하이브리드 앱입니다. 완전한 네이티브 앱이나 대규모 플랫폼은 별도 범위로 검토합니다. 할 수 있는 것과 아닌 것을 먼저 말씀드리는 편이 서로 낫습니다.</p>
     </div>
     <div class="panels">
       <div class="panel" data-fade>
@@ -218,16 +273,145 @@
   </div>
 </section>
 
-<section class="sec sec--tight">
+<!-- 진행 중 불안 해소 — dpectrum 의 '실시간 공유 · 소유권 명시', mobpa 의 '전담·QA·출시 후'.
+     외주 개발에서 고객이 가장 불안해하는 세 가지에 먼저 답한다.
+     ⚠ 소유권 이전 범위는 계약 조건이라 '계약서에 적는다'까지만 말한다(단정하지 않는다). -->
+<section class="sec">
+  <div class="container">
+    <p class="eyebrow">진행 방식</p>
+    <div class="sechead sechead--stack" style="margin-top:28px">
+      <h2 class="sechead__title" data-anim="lines">진행 중에 무슨 일이 일어나는지 보이게 합니다.</h2>
+      <p class="sechead__lead" data-anim="lines">개발이 시작되면 고객은 볼 것이 없어집니다. 무엇을 만들고 있는지, 결과물이 누구 것인지, 오픈 뒤에는 어떻게 되는지를 먼저 정해 둡니다.</p>
+    </div>
+    <div class="cols" style="margin-top:64px">
+      <div class="col" data-fade>
+        <div class="rule"></div>
+        <div class="col__label"><span>진행 공유</span></div>
+        <p class="col__body">단계마다 확인할 것을 정해 두고, 화면이 나오는 대로 눌러 보며 확인하십니다.</p>
+      </div>
+      <div class="col" data-fade data-delay=".08">
+        <div class="rule"></div>
+        <div class="col__label"><span>산출물과 소유권</span></div>
+        <p class="col__body">디자인 파일·계정·소스의 소유와 인계 범위를 계약서에 적고 시작합니다.</p>
+      </div>
+      <div class="col" data-fade data-delay=".16">
+        <div class="rule"></div>
+        <div class="col__label"><span>출시 이후</span></div>
+        <p class="col__body">오류 대응과 수정 범위를 미리 정해 둡니다. 유지보수에서 이어 갑니다.</p>
+      </div>
+    </div>
+    <div class="btns" style="margin-top:48px">
+      <a class="btn" href="process.html">제작 과정 보기</a>
+      <a class="btn" href="maintenance.html">유지보수 안내</a>
+      <a class="btn" href="government.html">정부지원사업 활용</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec invert sec--tight">
+  <div class="container">
+    <div class="sechead sechead--full">
+      <h2 class="sechead__title" data-anim="lines">무엇이 비용을 정하는지 먼저 알려드립니다.</h2>
+      <p class="sechead__lead" data-anim="lines">앱은 기능 하나가 늘 때마다 화면과 검증이 함께 늘어납니다. 그래서 금액보다 범위를 먼저 정합니다.</p>
+    </div>
+    <div class="cols" style="margin-top:64px">
+      <div class="col" data-fade>
+        <div class="rule"></div>
+        <div class="col__label"><span>기능 수</span></div>
+        <p class="col__body">화면과 처리해야 할 경우의 수가 함께 늘어납니다.</p>
+      </div>
+      <div class="col" data-fade data-delay=".08">
+        <div class="rule"></div>
+        <div class="col__label"><span>연동 범위</span></div>
+        <p class="col__body">결제·외부 시스템·실시간 기능은 난이도가 크게 달라집니다.</p>
+      </div>
+      <div class="col" data-fade data-delay=".16">
+        <div class="rule"></div>
+        <div class="col__label"><span>운영 범위</span></div>
+        <p class="col__body">관리자에서 무엇까지 직접 관리하실지에 따라 달라집니다.</p>
+      </div>
+    </div>
+    <div class="btns" style="margin-top:48px">
+      <a class="btn" href="price-guide.html" style="border-color:color-mix(in srgb,var(--bg) 30%,transparent);color:var(--bg)">제작비 안내 보기</a>
+      <a class="btn" href="plan.html" style="border-color:color-mix(in srgb,var(--bg) 30%,transparent);color:var(--bg)">제작 플랜 비교</a>
+    </div>
+  </div>
+</section>
+
+<!-- 상담 진입 — codeventer 의 '기획서 없는 상담 허용'.
+     앱은 아직 사이트가 없는 경우가 대부분이라 진단이 아니라 '참고 서비스'를 받는다. -->
+<section class="sec sec--wide">
+  <div class="container">
+    <div class="biz-diag">
+      <div class="biz-diag__aside">
+        <p class="eyebrow">아이디어 단계 상담</p>
+        <h2 class="sechead__title" style="margin-top:24px" data-anim="lines">기획서가 없어도 상담할 수 있습니다.</h2>
+        <p class="sechead__lead" style="margin-top:24px;max-width:none" data-anim="lines">문서로 정리되어 있지 않아도 괜찮습니다. 하려는 일과 대상, 참고하는 서비스만 알려주시면 기능을 함께 추려 드립니다.</p>
+        <form class="biz-quick" data-quick="free-proposal.html">
+          <div class="biz-quick__f">
+            <label class="sr-only" for="aq-site">참고하는 서비스나 사이트</label>
+            <input id="aq-site" name="site" type="text" placeholder="참고하는 서비스·사이트 (예: 앱 이름)" autocomplete="off">
+          </div>
+          <button class="btn btn--brand" type="submit">상담 신청하기</button>
+        </form>
+        <p class="biz-quick__note">한 줄만 남겨주셔도 시작됩니다. 다음 화면에서 연락받으실 정보만 더 적어주세요.</p>
+        <p class="note" style="margin-top:28px">회신 방식과 소요 기간은 상담에서 안내드립니다.</p>
+      </div>
+
+      <div class="biz-diag__rows" data-hin>
+        <div class="biz-diag__row hin">
+          <p class="biz-diag__step">STEP<b>01</b><i aria-hidden="true"></i></p>
+          <div>
+            <h3 class="biz-diag__t">하려는 일 정리</h3>
+            <p class="biz-diag__d">누가 무엇을 하러 오는 서비스인지, 지금 어떤 방식으로 하고 계신지 듣습니다.</p>
+            <div class="biz-chips">
+              <span class="biz-chip">대상</span>
+              <span class="biz-chip">핵심 행동</span>
+              <span class="biz-chip">현재 방식</span>
+              <span class="biz-chip">참고 서비스</span>
+            </div>
+          </div>
+        </div>
+        <div class="biz-diag__row hin">
+          <p class="biz-diag__step">STEP<b>02</b><i aria-hidden="true"></i></p>
+          <div>
+            <h3 class="biz-diag__t">기능 추리기</h3>
+            <p class="biz-diag__d">없으면 안 되는 기능과 미뤄도 되는 기능을 나눕니다.</p>
+          </div>
+        </div>
+        <div class="biz-diag__row hin">
+          <p class="biz-diag__step">STEP<b>03</b><i aria-hidden="true"></i></p>
+          <div>
+            <h3 class="biz-diag__t">방식 판단</h3>
+            <p class="biz-diag__d">웹앱·하이브리드로 될 일인지, 별도 범위가 필요한 일인지 솔직하게 말씀드립니다.</p>
+          </div>
+        </div>
+        <div class="biz-diag__row hin">
+          <p class="biz-diag__step">STEP<b>04</b><i aria-hidden="true"></i></p>
+          <div>
+            <h3 class="biz-diag__t">범위·비용 안내</h3>
+            <p class="biz-diag__d">1차로 만들 범위와 그다음에 더할 것을 나눠 정리해 드립니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec invert sec--tight">
   <div class="container">
     <div class="sechead">
       <h2 class="sechead__title" data-anim="lines">앱 제작 자주 묻는 질문.</h2>
-      <p class="sechead__lead" data-anim="lines">개발 방식과 홈페이지 연동, 앱스토어 등록에 대해 자주 받는 질문입니다.</p>
+      <p class="sechead__lead" data-anim="lines">개발 방식과 홈페이지 연동, 앱스토어 등록과 소유권에 대해 자주 받는 질문입니다.</p>
     </div>
     <div class="faq">
       <details class="faq__item">
         <summary><span class="faq__q" aria-hidden="true"></span>어떤 방식으로 개발하나요?<i aria-hidden="true"></i></summary>
-        <div class="faq__a"><p>서비스 성격에 따라 웹앱·하이브리드·네이티브 중 적합한 방식을 상담에서 제안합니다. 웹과 함께 운영하는 경우가 많아 웹 기반을 우선 검토합니다.</p></div>
+        <div class="faq__a"><p>서비스 성격에 따라 웹앱·하이브리드·네이티브 중 적합한 방식을 상담에서 제안합니다. 웹과 함께 운영하는 경우가 많아 웹 기반을 우선 검토하며, 네이티브가 꼭 필요한 경우에는 그렇게 말씀드립니다.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary><span class="faq__q" aria-hidden="true"></span>기획서가 없는데 상담할 수 있나요?<i aria-hidden="true"></i></summary>
+        <div class="faq__a"><p>가능합니다. 오히려 문서보다 "누가 무엇을 하러 오는 서비스인가"를 이야기하는 편이 빠릅니다. 기능 목록은 상담에서 함께 추려 정리해 드립니다.</p></div>
       </details>
       <details class="faq__item">
         <summary><span class="faq__q" aria-hidden="true"></span>홈페이지와 함께 만들 수 있나요?<i aria-hidden="true"></i></summary>
@@ -237,10 +421,18 @@
         <summary><span class="faq__q" aria-hidden="true"></span>앱스토어 등록도 포함되나요?<i aria-hidden="true"></i></summary>
         <div class="faq__a"><p>앱스토어 등록은 항상 포함되는 것은 아니며, 필요에 따라 선택 범위로 진행합니다. 심사 대응이 필요한 경우 준비물과 진행 방식을 상담에서 안내합니다.</p></div>
       </details>
+      <details class="faq__item">
+        <summary><span class="faq__q" aria-hidden="true"></span>결과물의 소유권은 어떻게 되나요?<i aria-hidden="true"></i></summary>
+        <div class="faq__a"><p>디자인 파일·계정·소스의 소유와 인계 범위를 계약서에 적고 시작합니다. 나중에 다른 곳에서 이어 개발하실 수 있도록 인계 항목을 미리 정해 두는 편입니다.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary><span class="faq__q" aria-hidden="true"></span>정부지원사업으로 진행할 수 있나요?<i aria-hidden="true"></i></summary>
+        <div class="faq__a"><p>지원사업에 따라 가능한 경우가 있습니다. 사업마다 요건과 서류가 다르므로 해당 공고 기준에 맞춰 진행 방식을 상담에서 확인합니다.</p></div>
+      </details>
     </div>
     <div class="btns" style="margin-top:48px">
-      <a class="btn" href="website.html">홈페이지 제작센터</a>
-      <a class="btn" href="process.html">제작 과정</a>
+      <a class="btn" href="website.html" style="border-color:color-mix(in srgb,var(--bg) 30%,transparent);color:var(--bg)">홈페이지 제작센터</a>
+      <a class="btn" href="process.html" style="border-color:color-mix(in srgb,var(--bg) 30%,transparent);color:var(--bg)">제작 과정</a>
     </div>
   </div>
 </section>
@@ -249,10 +441,10 @@
   <div class="oneline__stick">
     <div style="text-align:center">
       <p class="eyebrow" style="margin-bottom:24px">GET STARTED</p>
-      <p class="oneline__t" data-anim>기능 목록보다 동선부터 이야기해요.</p>
+      <p class="oneline__t" data-anim>핵심 기능 하나부터 정해 보세요.</p>
       <div class="btns" style="justify-content:center;margin-top:48px">
-        <a class="btn btn--brand" href="free-proposal.html">무료 홈페이지 제안받기</a>
-        <a class="btn" href="inquiry.html">앱 제작 상담</a>
+        <a class="btn btn--brand" href="inquiry.html">아이디어 단계 상담</a>
+        <a class="btn" href="free-proposal.html">무료 제안받기</a>
       </div>
     </div>
   </div>
@@ -281,6 +473,8 @@
       <div>
         <h4 class="footer__h">Information</h4>
         <dl class="footer__info">
+          <div><dt>전화</dt><dd><a href="tel:02-0000-0000">02-0000-0000</a></dd></div>
+          <div><dt>이메일</dt><dd><a href="mailto:contact@haoweb.co.kr">contact@haoweb.co.kr</a></dd></div>
           <div><dt>사업자 정보</dt><dd>오픈 시 안내됩니다.</dd></div>
           <div><dt>서비스</dt><dd>홈페이지 제작 · 리뉴얼</dd></div>
         </dl>
