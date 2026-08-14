@@ -321,6 +321,17 @@
       </div>
     </div>
     <p class="note" style="margin-top:48px">반응형 제작·SSL 보안·검색엔진 등록·접속 분석 등 홈페이지의 기본 항목은 모든 제작에 포함됩니다. 연동 방식은 본사에서 사용 중인 도구에 따라 달라지며, 가능한 범위는 상담에서 확인해 드립니다.</p>
+
+    <!-- 촬영 — bravomedi 의 '전문 연출 촬영', tommso 의 PHOTO 라인과 같은 자리.
+         프랜차이즈는 매장·메뉴 사진이 브랜드 인상을 좌우하는데 지금까지 한 줄로만 지나갔다. -->
+    <div class="sechead sechead--full" style="margin-top:104px">
+      <h2 class="sechead__title" data-anim="lines">매장과 메뉴는 사진이 절반입니다.</h2>
+      <p class="sechead__lead" data-anim="lines">브랜드 톤에 맞춰 매장과 메뉴를 촬영합니다. 같은 기준으로 찍어 두면 매장이 늘어나고 메뉴가 바뀌어도 화면이 흐트러지지 않습니다.</p>
+    </div>
+    <div class="btns" style="margin-top:40px">
+      <a class="btn" href="studio.html">사진·영상 촬영 안내</a>
+      <a class="btn" href="graphic-design.html">그래픽·편집 디자인</a>
+    </div>
   </div>
 </section>
 
@@ -507,8 +518,17 @@
         <p class="eyebrow">무료 진단</p>
         <h2 class="sechead__title" style="margin-top:24px" data-anim="lines">가맹 문의가 왜 오지 않는지 찾아드립니다.</h2>
         <p class="sechead__lead" style="margin-top:24px;max-width:none" data-anim="lines">본사 사이트 주소만 주시면 담당자가 직접 보고, 가맹 모집 동선에서 무엇이 막혀 있는지 정리해 드립니다.</p>
-        <div class="btns" style="margin-top:40px">
-          <a class="btn btn--brand" href="free-proposal.html">무료 진단 신청하기</a>
+        <!-- 한 줄 진입 — pointweb 의 "사이트 URL만 주시면 담당자가 직접 봅니다" 이식.
+             입력한 주소를 무료 제안 폼의 '현재 홈페이지 주소'로 넘긴다(실제로 동작한다). -->
+        <form class="biz-quick" data-quick="free-proposal.html">
+          <div class="biz-quick__f">
+            <label class="sr-only" for="fq-site">본사 사이트 주소</label>
+            <input id="fq-site" name="site" type="text" placeholder="본사 사이트 주소 (예: brand.co.kr)" autocomplete="url">
+          </div>
+          <button class="btn btn--brand" type="submit">무료 진단 신청하기</button>
+        </form>
+        <p class="biz-quick__note">주소만 남겨주셔도 시작됩니다. 다음 화면에서 연락받으실 정보만 더 적어주세요.</p>
+        <div class="btns" style="margin-top:24px">
           <a class="btn" href="diagnosis.html">진단에서 무엇을 보나요</a>
         </div>
         <p class="note" style="margin-top:28px">가맹 사업을 준비 중이라 아직 사이트가 없어도 신청하실 수 있습니다. 회신 방식과 소요 기간은 상담에서 안내드립니다.</p>

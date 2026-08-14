@@ -1560,14 +1560,14 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
 
 /* 색 — 다크 섹션과 .invert(밝은) 섹션 양쪽에서 같은 마크업이 쓰인다 */
 .biz-bands, .biz-open, .biz-grid, .biz-flow,
-.biz-search, .biz-diag, .biz-incl {
+.biz-search, .biz-diag, .biz-incl, .biz-quick {
   --hline: var(--border);
   --hmuted: var(--muted);
   --hsoft: color-mix(in srgb, var(--fg) 5%, transparent);
 }
 .invert .biz-bands, .invert .biz-open, .invert .biz-grid,
 .invert .biz-flow, .invert .biz-search, .invert .biz-diag,
-.invert .biz-incl {
+.invert .biz-incl, .invert .biz-quick {
   --hline: color-mix(in srgb, var(--bg) 22%, transparent);
   --hmuted: color-mix(in srgb, var(--bg) 62%, transparent);
   --hsoft: color-mix(in srgb, var(--bg) 4%, transparent);
@@ -1857,4 +1857,40 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
 @media (max-width: 900px) {
   .biz-incl { grid-template-columns: 1fr; }
   .biz-herocta { margin-top: 32px; }
+}
+
+/* ── I. 한 줄 진단 진입 (2026-08-14) ───────────────────────
+   레퍼런스에서 가장 강한 전환 장치는 '폼을 페이지 안에 두는 것'이었다 —
+   브이웹은 화면 하단에 상시 입력줄을, 프랜차이즈플러스는 상·하단에 견적 폼을 둔다.
+   포인트웹은 한 발 더 나가 **"사이트 URL만 주시면 담당자가 직접 봅니다"** 로 진입을 한 칸으로 줄인다.
+
+   우리는 접수 기능이 아직 없다(`free-proposal` 폼도 안내만 띄운다).
+   그래서 **가짜 폼을 하나 더 만들지 않고**, 입력한 주소를 그대로 무료 제안 폼의
+   '현재 홈페이지 주소'(#fp-site) 로 넘긴다. 실제로 동작하는 연결이고 한 칸이면 시작된다. */
+.biz-quick { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.biz-quick__f { flex: 1 1 280px; min-width: 0; }
+.biz-quick input {
+  width: 100%; padding: 17px 18px;
+  border: 1px solid var(--hline); border-radius: var(--r-btn);
+  background: transparent; color: inherit;
+  font-family: inherit; font-size: var(--t-sm); font-weight: 500;
+  transition: border-color .3s ease;
+}
+.biz-quick input::placeholder { color: var(--hmuted); }
+.biz-quick input:focus { outline: none; border-color: var(--brand); }
+.biz-quick .btn { flex: none; }
+/* 좌측 고정 컬럼(진단 aside)은 폭이 좁아 한 줄에 들어가지 않는다 — 거기서는 세로로 쌓는다 */
+.biz-diag__aside .biz-quick { flex-direction: column; }
+.biz-diag__aside .biz-quick .btn { width: 100%; }
+.biz-quick__note { margin-top: 14px; font-size: var(--t-sm); line-height: 1.7; color: var(--hmuted); }
+
+@media (max-width: 900px) {
+  .biz-quick .btn { width: 100%; }
+}
+
+/* 화면에는 안 보이지만 스크린리더는 읽는 라벨 — 한 줄 입력처럼 placeholder 만으로는
+   라벨이 되지 않는 자리에 쓴다(placeholder 는 입력을 시작하면 사라진다). */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }

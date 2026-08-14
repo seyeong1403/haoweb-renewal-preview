@@ -384,6 +384,35 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- 한 줄 진단 진입 (2026-08-14) ----------
+     업종 페이지의 `[data-quick]` 에 사이트 주소를 넣으면 그대로 무료 제안 폼으로 넘긴다.
+     레퍼런스(pointweb)의 "URL만 주시면 담당자가 직접 봅니다" 를 우리 방식으로 옮긴 것이다.
+     ⚠ 접수 기능이 아직 없으므로 **여기서 접수하는 척하지 않는다** — 값을 들고 폼으로 이동만 한다.
+     받는 쪽(`free-proposal`)에서는 같은 함수가 ?site= 를 읽어 '현재 홈페이지 주소'를 채운다.
+     두 요소 모두 없으면 즉시 반환하므로 다른 페이지에는 영향이 없다. */
+  function initQuick() {
+    var forms = [].slice.call(document.querySelectorAll('[data-quick]'));
+    var site = document.getElementById('fp-site');
+    if (!forms.length && !site) return;
+
+    forms.forEach(function (f) {
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var input = f.querySelector('input');
+        var v = input && input.value ? input.value.trim() : '';
+        var url = f.getAttribute('data-quick') || 'free-proposal.html';
+        window.location.href = v ? url + '?site=' + encodeURIComponent(v) : url;
+      });
+    });
+
+    if (site && !site.value) {
+      var m = /[?&]site=([^&]*)/.exec(window.location.search);
+      if (m && m[1]) {
+        try { site.value = decodeURIComponent(m[1].replace(/\+/g, ' ')); } catch (err) { /* 잘못된 인코딩은 무시 */ }
+      }
+    }
+  }
+
   /* ---------- 리스트 행 마퀴 ---------- */
   function initMarquee() {
     document.querySelectorAll('[data-marquee]').forEach(function (m) {
@@ -675,6 +704,7 @@
     initTimeline();
     initHospitalRows();
     initHospital();
+    initQuick();
     initWork();
     initWorkView();
     initFaq();
