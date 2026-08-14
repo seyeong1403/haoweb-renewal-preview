@@ -1560,13 +1560,14 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
 
 /* 색 — 다크 섹션과 .invert(밝은) 섹션 양쪽에서 같은 마크업이 쓰인다 */
 .hospital-bands, .hospital-open, .hospital-cms, .hospital-flow,
-.hospital-search, .hospital-diag {
+.hospital-search, .hospital-diag, .hospital-incl {
   --hline: var(--border);
   --hmuted: var(--muted);
   --hsoft: color-mix(in srgb, var(--fg) 5%, transparent);
 }
 .invert .hospital-bands, .invert .hospital-open, .invert .hospital-cms,
-.invert .hospital-flow, .invert .hospital-search, .invert .hospital-diag {
+.invert .hospital-flow, .invert .hospital-search, .invert .hospital-diag,
+.invert .hospital-incl {
   --hline: color-mix(in srgb, var(--bg) 22%, transparent);
   --hmuted: color-mix(in srgb, var(--bg) 62%, transparent);
   --hsoft: color-mix(in srgb, var(--bg) 4%, transparent);
@@ -1827,4 +1828,33 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
   .js-hin [data-hin] .hin, .js-hin [data-hin] .hospital-chip { opacity: 1; transform: none; }
   .hospital-band::after { transition: none; }
   .hospital-open__rail i { transition: none; }
+}
+
+/* ── G. 히어로 CTA (2026-08-14) ─────────────────────────────
+   서브페이지 히어로에는 원래 버튼이 없다. 병원 페이지만 예외다 —
+   무료 진단이 페이지 하단(7,700px 지점)에만 있어서 대부분 보기 전에 이탈했다.
+   전환이 목적인 페이지이므로 첫 화면에서 한 번 제안한다. */
+.hospital-herocta { margin-top: 44px; }
+.hospital-herocta .note { margin-top: 18px; }
+
+/* ── H. 기본 제공 범위 (bravomedi 12가지 · newsight 20가지 혜택 구간) ──
+   원본은 번호를 단 항목을 격자에 늘어놓아 "이만큼이 기본"이라는 인상을 만든다.
+   같은 방식이되 항목마다 한 줄 설명을 붙여 목록이 아니라 약속으로 읽히게 했다.
+   ⚠ CMS 그리드(.hospital-cms__grid)와 형태가 겹치지 않도록 열 수와 밀도를 다르게 잡았다. */
+.hospital-incl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 48px; margin-top: 64px; }
+.hospital-incl__item { padding: 28px 0 32px; border-top: 1px solid var(--hline); }
+.hospital-incl__head { display: flex; align-items: baseline; gap: 12px; }
+.hospital-incl__no {
+  font-family: var(--font-en); font-size: var(--t-eyebrow); font-weight: 700;
+  letter-spacing: .1em; color: var(--hmuted);
+}
+.hospital-incl__t { font-size: var(--t-lead); font-weight: 600; letter-spacing: -.01em; }
+.hospital-incl__d { margin-top: 10px; font-size: var(--t-sm); line-height: 1.75; color: var(--hmuted); }
+
+@media (max-width: 1180px) {
+  .hospital-incl { grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
+}
+@media (max-width: 900px) {
+  .hospital-incl { grid-template-columns: 1fr; }
+  .hospital-herocta { margin-top: 32px; }
 }
