@@ -362,8 +362,10 @@
       <p class="reveal__flow" data-reveal-flow><span>자료</span><span>구조</span><span>콘텐츠</span><span>문의</span></p>
       <div class="rule" data-reveal-rule style="transform:scaleX(0);transform-origin:center;background:#f4f4f2"></div>
       <div class="reveal__grid">
-        <h2 class="reveal__t">정리되지 않은 자료가<br>문의로 이어지는<br>홈페이지가 되기까지.</h2>
-        <p class="reveal__p">회사소개서, 카탈로그, PPT, 제품 사진과 담당자 인터뷰를 바탕으로 정리합니다. 모든 원고와 페이지 구성을 완성해서 전달할 필요는 없습니다. 하오웹은 고객이 가진 자료에서 핵심 메시지와 사이트맵·원고, 사진·그래픽 방향, 문의까지의 흐름을 정리해 명확한 첫 화면과 이해하기 쉬운 설명, 신뢰할 근거, 상담·견적·예약 동선으로 만듭니다.</p>
+        <!-- 폭 500 에서는 첫 줄이 접혀 '아니라,' 만 한 줄에 남는다. 대구 구조가 보이도록
+             폭만 넓혔다(폰트 크기는 --reveal 기본값 52px 그대로). 모바일에서 넘치지 않게 min(). -->
+        <h2 class="reveal__t" style="width:min(672px,100%)">준비해서 맡기는 것이 아니라,<br>말씀하시면 저희가 정리합니다.</h2>
+        <p class="reveal__p">회사소개서도 카탈로그도 없어도 괜찮습니다. 방문이든 화상이든, 전화 통화만으로도 시작합니다. 사이트맵과 원고는 저희가 초안으로 만들어 드립니다.</p>
       </div>
     </div>
   </div>
@@ -678,7 +680,7 @@
     <p class="eyebrow">PLAN</p>
     <div class="sechead sechead--stack" style="margin-top:28px">
       <h2 class="sechead__title" data-anim="lines">필요한 범위만큼.</h2>
-      <p class="sechead__lead" data-anim="lines">고정 금액표 대신 제작비 기준을 공개하고, 검토 후 예상 견적을 드립니다.</p>
+      <p class="sechead__lead" data-anim="lines">자료가 준비되지 않아도 시작할 수 있습니다. 고정 금액표 대신 제작비 기준을 공개하고, 검토 후 예상 견적을 드립니다.</p>
     </div>
     <div class="plans" style="margin-top:80px">
       <div class="plan" data-fade>
@@ -686,7 +688,7 @@
         <p class="plan__scale"><b>5—8</b><i>PAGES</i></p>
         <p class="plan__eyebrow">포함 범위</p>
         <ul class="plan__list">
-          <li>기본 정보구조 설계</li><li>보유 원고 정리와 편집</li><li>맞춤형 메인 디자인</li>
+          <li>기본 정보구조 설계</li><li>인터뷰 기반 원고 정리</li><li>맞춤형 메인 디자인</li>
           <li>반응형 구현</li><li>문의 폼 1개</li><li>게시판 또는 공지 기능</li>
           <li>검색·AI 기본 구조</li><li>기본 관리자 기능</li><li>오픈 후 초기 오류 점검</li>
         </ul>
