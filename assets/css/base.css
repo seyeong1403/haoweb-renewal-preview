@@ -1777,10 +1777,14 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
 .biz-diag__aside { position: sticky; top: calc(var(--nav-h) + 56px); align-self: start; }
 /* 컬럼이 좁아 제목이 네 줄로 쪼개졌다 — 이 자리에서만 한 단 낮춘다(공통 .sechead 는 건드리지 않는다) */
 .biz-diag__aside .sechead__title { font-size: calc(var(--t-h3) * .78); }
-/* ⚠ 밝은 섹션에서 .btn 은 글자색이 var(--fg) 라 흰 바탕에 흰 글자가 된다.
-   사이트의 기존 처방은 조각에서 인라인으로 색을 주는 것인데(칼럼 4편이 그렇다),
-   여기서는 같은 값을 이 섹션 범위 규칙으로 둔다. 공통 .btn 정의는 건드리지 않는다. */
-.invert .biz-diag .btn:not(.btn--brand) {
+/* ⚠ 밝은 섹션에서 .btn 은 글자색이 var(--fg) 라 흰 바탕에 흰 글자가 된다 — 빈 박스로 보인다.
+   사이트의 기존 처방은 조각에서 인라인으로 색을 주는 것인데(칼럼 4편이 그렇다), 새 블록을
+   밝은 섹션에 넣을 때마다 다시 밟는다(2026-08-15 government 에서 실제로 밟았다).
+   그래서 **기본 상태만** 밝은 섹션 전체로 넓힌다. 조각의 인라인(98곳)과 값이 완전히 같아서
+   화면은 달라지지 않고, 앞으로 밝은 섹션에 넣는 버튼은 인라인 없이도 보인다.
+   ⚠ :hover 는 넓히면 안 된다 — 인라인 `color:var(--bg)` 가 우선이라 배경을 var(--bg) 로 깔면
+     다크 위에 다크 글자가 된다(98곳 전부). 인라인을 걷어내기 전에는 .biz-diag 범위로 둔다. */
+.invert .btn:not(.btn--brand) {
   color: var(--bg); border-color: color-mix(in srgb, var(--bg) 30%, transparent);
 }
 .invert .biz-diag .btn:not(.btn--brand):hover {
