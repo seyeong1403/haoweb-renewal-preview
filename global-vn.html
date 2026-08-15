@@ -130,7 +130,11 @@
   <canvas class="hero__canvas" data-hero-canvas aria-hidden="true"></canvas>
   <div class="hero__inner" style="justify-content:flex-end;padding-bottom:56px">
     <p class="hero__label" data-fade data-anim-hero>글로벌 — 베트남 홈페이지</p>
-    <h1 class="hero__title" data-anim data-anim-hero style="margin-top:0">Vietnam</h1>
+    <!-- ⭐ 영문은 <p> 다. 국문 줄이 h1 이다 — 검색·AI 가 읽는 제목을 국문으로 두기 위한 것이고
+         화면은 그대로다(클래스가 같다). site.js 의 splitChars() 가 h1 안의 태그를 지우기 때문에
+         영문 대문 안에 국문 span 을 넣는 방법은 못 쓴다. 2026-08-15. -->
+    <p class="hero__title" data-anim data-anim-hero style="margin-top:0">Vietnam</p>
+    <h1 class="h1__ko" data-fade data-anim-hero data-delay=".06">베트남 홈페이지 제작</h1>
     <p class="subhero__kr" data-fade data-anim-hero style="margin-top:22px">Global website for Vietnam — 베트남 시장을 위한 홈페이지 제작을 안내합니다.</p>
     <div class="biz-herocta" data-fade data-anim-hero data-delay=".12">
       <div class="btns">

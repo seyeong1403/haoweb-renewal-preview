@@ -282,6 +282,13 @@ h1, h2, h3, h4, p, figure { margin: 0; }
 }
 .subhero__kr { margin-top: 18px; font-size: var(--t-lead); font-weight: 400; line-height: 1.6; color: #f4f4f2; max-width: 660px; }
 .subhero__crumb { font-size: var(--t-eyebrow); letter-spacing: .12em; text-transform: uppercase; color: rgba(244,244,242,.6); margin-bottom: 12px; }
+/* 국문 제목 — 2026-08-15 신설.
+   ⭐ h1 이 전 페이지 영문 한 단어(About·Shop…)라 검색·AI 가 읽을 국문 키워드가 0개였다.
+     AI 가시성을 파는 사이트에서 이건 그냥 둘 수 없다.
+   ⚠ 영문 대문에 span 을 끼워 넣는 방법은 못 쓴다 — site.js 의 splitChars() 가 h1 의
+     innerHTML 을 textContent 로 납작하게 만든 뒤 글자 단위로 재조립해서 중첩 태그가 사라진다.
+     그래서 영문은 <p> 로 내리고(클래스가 그대로라 화면은 동일) 이 국문 줄을 <h1> 으로 올렸다. */
+.h1__ko { margin-top: 16px; font-size: var(--t-lead); font-weight: 700; letter-spacing: -.01em; color: #f4f4f2; }
 
 /* ---------- 7. 섹션 공통 ---------- */
 /* 섹션 소제목 — 제목 위에 붙는 짧은 라벨 (RENEWAL · AI VISIBILITY · 자가 점검 …)
