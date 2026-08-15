@@ -694,8 +694,8 @@
     });
   }
 
-  /* 디자인센터 포트폴리오 필터 (graphic-design). FAQ 칩과 같은 방식이고,
-     항목이 152개라 숨김은 hidden 속성으로만 한다 — 지우거나 다시 그리지 않는다.
+  /* 포트폴리오 필터 (graphic-design · studio). FAQ 칩과 같은 방식이고,
+     항목이 많아 숨김은 hidden 속성으로만 한다 — 지우거나 다시 그리지 않는다.
      JS 가 없거나 실패해도 전부 보이는 상태가 기본값이다. */
   function initDesignWork() {
     var wrap = document.querySelector('[data-dwork]');
@@ -715,6 +715,115 @@
     });
   }
 
+  /* 포트폴리오 라이트박스 — 카드를 누르면 크게 보이고 오른쪽에 설명이 붙는다.
+     ⚠ 이동은 '지금 보이는 카드' 안에서만 한다. 필터를 걸어 놓고 다음으로 넘겼을 때
+        숨긴 항목이 튀어나오면 필터가 걸린 것처럼 보이지 않는다. */
+  function initLightbox() {
+    var grid = document.querySelector('[data-lbox]');
+    if (!grid) return;
+
+    var lb = null, imgEl, catEl, titleEl, descEl, rowsEl;
+    var list = [], idx = -1, opener = null;
+
+    /* ⚠ 처음부터 DOM 에 넣어 두지 않는다. 빈 `src` 인 <img> 가 검수에서 깨진 이미지로 잡히고,
+       모바일에서 문서 폭도 밀었다(2026-08-15 실제로 QA 가 잡아냈다). 열 때 한 번만 만든다. */
+    function build() {
+    lb = document.createElement('div');
+    lb.className = 'lbox';
+    lb.setAttribute('role', 'dialog');
+    lb.setAttribute('aria-modal', 'true');
+    lb.innerHTML =
+      '<div class="lbox__wrap">' +
+        '<div class="lbox__figure"><img class="lbox__img" src="" alt=""></div>' +
+        '<div class="lbox__info">' +
+          '<span class="lbox__cat"></span>' +
+          '<h3 class="lbox__title"></h3>' +
+          '<p class="lbox__desc"></p>' +
+          '<p class="lbox__label">PROJECT INFO</p>' +
+          '<div class="lbox__rows"></div>' +
+        '</div>' +
+      '</div>' +
+      '<button type="button" class="lbox__close" aria-label="닫기">&times;</button>' +
+      '<button type="button" class="lbox__btn lbox__btn--prev" aria-label="이전 작업">&#8249;</button>' +
+      '<button type="button" class="lbox__btn lbox__btn--next" aria-label="다음 작업">&#8250;</button>';
+    document.body.appendChild(lb);
+
+    imgEl = lb.querySelector('.lbox__img');
+    catEl = lb.querySelector('.lbox__cat');
+    titleEl = lb.querySelector('.lbox__title');
+    descEl = lb.querySelector('.lbox__desc');
+    rowsEl = lb.querySelector('.lbox__rows');
+
+    lb.querySelector('.lbox__close').addEventListener('click', close);
+    lb.querySelector('.lbox__btn--prev').addEventListener('click', function () { show(idx - 1); });
+    lb.querySelector('.lbox__btn--next').addEventListener('click', function () { show(idx + 1); });
+    // 배경(어두운 여백)을 눌러도 닫힌다. 이미지·설명 위 클릭은 통과시키지 않는다.
+    lb.addEventListener('click', function (e) {
+      if (e.target === lb || e.target.classList.contains('lbox__wrap') ||
+          e.target.classList.contains('lbox__figure')) close();
+    });
+    }
+
+    function shown() {
+      return [].slice.call(grid.querySelectorAll('.dwork__item')).filter(function (c) {
+        return !c.hidden;
+      });
+    }
+
+    function row(label, value) {
+      return value ? '<div><b>' + label + '</b><span>' + value + '</span></div>' : '';
+    }
+
+    function show(i) {
+      if (!list.length) return;
+      idx = (i % list.length + list.length) % list.length;
+      var c = list[idx];
+      var img = c.querySelector('img');
+      imgEl.src = c.getAttribute('data-large') || img.getAttribute('src');
+      imgEl.alt = img.getAttribute('alt') || '';
+      catEl.textContent = (c.querySelector('.dwork__c') || {}).textContent || '';
+      titleEl.textContent = (c.querySelector('.dwork__t') || {}).textContent || '';
+      descEl.textContent = c.getAttribute('data-desc') || '';
+      rowsEl.innerHTML =
+        row('제작물', c.getAttribute('data-deliver')) +
+        row('작업 범위', c.getAttribute('data-scope')) +
+        row('진행', '하오웹에서 직접 제작') +
+        '<div><b>문의</b><span><a href="inquiry.html">제작 문의하기 &rarr;</a></span></div>';
+      lb.querySelector('.lbox__info').scrollTop = 0;
+    }
+
+    function open(card) {
+      if (!lb) build();
+      list = shown();
+      var i = list.indexOf(card);
+      if (i < 0) return;
+      opener = card;
+      lb.classList.add('is-open');
+      document.body.classList.add('lbox-open');
+      show(i);
+      lb.querySelector('.lbox__close').focus();
+    }
+
+    function close() {
+      if (!lb) return;
+      lb.classList.remove('is-open');
+      document.body.classList.remove('lbox-open');
+      if (opener) opener.focus();
+      opener = null;
+    }
+
+    grid.addEventListener('click', function (e) {
+      var card = e.target.closest ? e.target.closest('.dwork__item') : null;
+      if (card) open(card);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!lb || !lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(idx - 1);
+      else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+  }
+
   function start() {
     initNav();
     initReveal();
@@ -731,6 +840,7 @@
     initWork();
     initWorkView();
     initDesignWork();
+    initLightbox();
     initFaq();
     initViz();
   }

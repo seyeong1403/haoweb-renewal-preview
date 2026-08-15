@@ -2020,8 +2020,17 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
    (2026-08-15 실측: 390px 에서 161.6px / 191.0px 로 갈라졌다). */
 .dwork {
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 24px;
+  /* ⚠ 카드는 전부 컨테이너 안(실측 350 이내)인데 항목이 100개를 넘어가면
+     그리드의 scrollWidth 만 4px 커지고 그게 문서 폭으로 전파된다(모바일 가로초과로 잡힘).
+     넘치는 요소가 없으니 잘릴 것도 없다 — 전파만 끊는다. */
+  overflow-x: clip;
+}
+.dwork__item {
+  display: block; width: 100%; padding: 0; border: 0; background: transparent;
+  font: inherit; color: inherit; text-align: left; cursor: zoom-in;
 }
 .dwork__item[hidden] { display: none; }
+.dwork__item:focus-visible { outline: 2px solid var(--brand); outline-offset: 4px; }
 /* ⚠ `cover` 로 두면 안 된다. 152장 중 **44장이 세로(2:3)** 이라 4:3 틀에 cover 로 넣으면
    위쪽 3분의 1만 남아 제품·본문이 통째로 잘린다(2026-08-15 실측 — 미니멜츠·서울우유는
    배경색만 남아 있었다). 포트폴리오는 결과물 전체가 보여야 하므로 contain 이다.
@@ -2049,3 +2058,68 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
 
 @media (max-width: 1100px) { .dwork { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 760px)  { .dwork { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; } }
+
+/* ── 포트폴리오 라이트박스 ─────────────────────────────────────────────
+   카드를 누르면 크게 보이고 오른쪽에 설명이 붙는다(원본 두 센터 사이트와 같은 구성).
+   마크업은 site.js 가 한 번만 만들어 body 에 붙인다 — 조각에는 들어가지 않는다. */
+.lbox {
+  position: fixed; inset: 0; z-index: 60; display: none;
+  /* ⚠ 반투명으로 두지 말 것. 88% → 97% 까지 올려 봐도 뒤 본문 글자가 설명과 겹쳐 읽혔다
+     (모바일에서 특히 심하다). 모달이니 그냥 덮는다. */
+  background: #0b0b0b;
+}
+.lbox.is-open { display: block; }
+.lbox__wrap {
+  position: absolute; inset: 0; display: grid; gap: 40px; align-items: center;
+  grid-template-columns: minmax(0, 1fr) 340px; padding: 72px 88px;
+}
+.lbox__figure { display: flex; align-items: center; justify-content: center; height: 100%; min-height: 0; }
+.lbox__img {
+  max-width: 100%; max-height: 100%; object-fit: contain;
+  border-radius: var(--r-card); background: #f4f4f2;
+}
+.lbox__info { color: #f4f4f2; max-height: 100%; overflow-y: auto; }
+.lbox__cat { display: block; font-size: var(--t-sm); color: #a8a8a6; }
+.lbox__title { margin-top: 10px; font-size: 26px; font-weight: 700; line-height: 1.35; word-break: keep-all; }
+.lbox__desc { margin-top: 16px; font-size: var(--t-body); line-height: 1.75; color: #d6d6d4; word-break: keep-all; }
+.lbox__label {
+  margin-top: 32px; padding-top: 18px; font-size: var(--t-eyebrow); letter-spacing: .08em;
+  color: #a8a8a6; border-top: 1px solid #4a4a4a;
+}
+.lbox__rows { margin-top: 14px; display: grid; gap: 10px; }
+.lbox__rows div { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 12px; font-size: var(--t-sm); }
+.lbox__rows b { font-weight: 600; color: #a8a8a6; }
+.lbox__rows span { color: #f4f4f2; word-break: keep-all; }
+.lbox__btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 1px solid #4a4a4a; background: color-mix(in srgb, #000 55%, transparent);
+  color: #f4f4f2; font-size: 24px; line-height: 1; cursor: pointer;
+  transition: border-color .25s, background .25s;
+}
+.lbox__btn:hover { border-color: #f4f4f2; background: #000; }
+.lbox__btn--prev { left: 20px; }
+.lbox__btn--next { right: 20px; }
+.lbox__close {
+  position: absolute; top: 20px; right: 20px; width: 48px; height: 48px;
+  border: 1px solid #4a4a4a; border-radius: 50%; background: transparent;
+  color: #f4f4f2; font-size: 26px; line-height: 1; cursor: pointer;
+  transition: border-color .25s, background .25s;
+}
+.lbox__close:hover { border-color: #f4f4f2; background: #000; }
+.lbox__btn:focus-visible, .lbox__close:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+body.lbox-open { overflow: hidden; }
+
+@media (max-width: 1000px) {
+  /* 좁은 화면에서는 설명을 이미지 아래로 내리고 전체를 세로 스크롤한다.
+     가로 2단을 유지하면 이미지도 설명도 둘 다 못 읽는 크기가 된다. */
+  .lbox__wrap {
+    grid-template-columns: minmax(0, 1fr); align-items: start;
+    padding: 64px 20px 32px; overflow-y: auto; gap: 24px;
+  }
+  .lbox__figure { max-height: 52vh; }
+  /* 이전·다음이 화면 아래에 고정되므로 그만큼 자리를 비운다 — 안 비우면 마지막 행을 가린다. */
+  .lbox__info { max-height: none; overflow: visible; padding-bottom: 76px; }
+  .lbox__title { font-size: 21px; }
+  .lbox__btn { top: auto; bottom: 16px; transform: none; width: 46px; height: 46px; }
+}
