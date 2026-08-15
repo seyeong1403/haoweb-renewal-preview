@@ -509,6 +509,11 @@ h1, h2, h3, h4, p, figure { margin: 0; }
 .plan__scale s { display: block; margin-top: 5px; text-decoration: none; font-size: 12px; }
 /* 보조 문구(또는 복합 구조)가 한 카드에만 있어서 그 카드의 (포함 범위)만 내려간다 → 한 줄분을 미리 확보한다 */
 .plan__scale { min-height: 104px; }
+/* 기준 금액 — 2026-08-15 신설. 플랜 카드에 숫자가 하나도 없어서 사이트가 반복하는
+   "가격을 숨기지 않습니다" 와 화면이 어긋나 있었다. 카드는 밝은 면이라 색은 --bg 계열이다. */
+.plan__price { margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(16,16,16,.14); }
+.plan__price b { display: block; font-size: 27px; font-weight: 700; letter-spacing: -.02em; color: var(--bg); }
+.plan__price i { display: block; margin-top: 7px; font-style: normal; font-size: 13px; color: rgba(16,16,16,.6); }
 .plan__eyebrow { margin-top: 32px; font-size: var(--t-eyebrow); color: rgba(16,16,16,.55); }
 .plan__list { margin-top: 12px; display: flex; flex-direction: column; gap: 9px; font-size: var(--t-sm); }
 
