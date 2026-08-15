@@ -2022,11 +2022,23 @@ main { position: relative; z-index: 1; background: var(--bg); }   /* 본문이 �
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 24px;
 }
 .dwork__item[hidden] { display: none; }
+/* ⚠ `cover` 로 두면 안 된다. 152장 중 **44장이 세로(2:3)** 이라 4:3 틀에 cover 로 넣으면
+   위쪽 3분의 1만 남아 제품·본문이 통째로 잘린다(2026-08-15 실측 — 미니멜츠·서울우유는
+   배경색만 남아 있었다). 포트폴리오는 결과물 전체가 보여야 하므로 contain 이다.
+   틀은 4:3 으로 고정해 행 정렬을 유지하고, 남는 자리는 밝은 판으로 채워 액자처럼 둔다. */
 .dwork__img {
-  display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center top;
-  border: 1px solid var(--border); border-radius: var(--r-card); background: var(--bg);
+  display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain;
+  border: 1px solid var(--border); border-radius: var(--r-card);
+  background: #f4f4f2; padding: 10px;
   transition: border-color .3s cubic-bezier(.4,0,.2,1);
 }
+/* 스튜디오 촬영본은 54장 중 43장이 세로(2:3)라 세로 틀을 쓴다. */
+.dwork--tall .dwork__img { aspect-ratio: 3 / 4; }
+
+/* 1:3 보다 홀쭉한 원본(상세페이지에는 1:14 도 있다)은 contain 으로 두면 실오라기가 된다.
+   썸네일 관행대로 위쪽을 채워 자른다 — 상세페이지는 첫 화면이 핵심이다. */
+.dwork__img--crop { object-fit: cover; object-position: center top; padding: 0; }
+
 .dwork__item:hover .dwork__img { border-color: var(--fg); }
 .dwork__cap { display: block; margin-top: 14px; }
 .dwork__t {
