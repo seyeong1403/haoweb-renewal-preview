@@ -261,7 +261,7 @@
       <div class="tstep"><span class="tstep__no">03</span>
         <h3 class="tstep__t">창업 비용</h3><p class="tstep__d">무엇에 얼마가 드는지 비용 구성을 확인합니다.</p></div>
       <div class="tstep"><span class="tstep__no">04</span>
-        <h3 class="tstep__t">가맹 절차</h3><p class="tstep__d">상담부터 개점까지 어떤 단계를 밟는지 봅니다.</p></div>
+        <h3 class="tstep__t">가맹 절차</h3><p class="tstep__d">정보공개서를 받고 14일이 지나야 계약합니다. 그 절차를 미리 보여 줍니다.</p></div>
       <div class="tstep"><span class="tstep__no">05</span>
         <h3 class="tstep__t">본사 지원</h3><p class="tstep__d">교육·물류·마케팅 지원과 매장 현황을 확인합니다.</p></div>
       <div class="tstep"><span class="tstep__no">06</span>
@@ -438,6 +438,21 @@
     </div>
 
     <p class="ba__result" data-fade>소비자는 <em>매장</em>을, 예비 점주는 <em>창업 정보</em>를, 기존 점주는 <em>필요한 자료</em>를 각자 찾아갑니다.</p>
+
+    <!-- 중간 진단 진입 — 2026-08-15. 진단 폼이 페이지 맨 끝 한 곳뿐이었다.
+         이 업종의 경쟁사(프랜차이즈플러스)는 견적 폼을 본문에 세 번 반복 배치한다.
+         구조가 달라지는 것을 보여 준 직후가 가장 설득된 지점이라 여기에 둔다.
+         ⚠ id 는 페이지 끝 폼과 겹치면 안 된다. -->
+    <div class="rule" style="margin-top:96px"></div>
+    <p class="eyebrow" style="margin-top:40px">무료 진단</p>
+    <p class="sechead__lead" style="margin-top:16px" data-anim="lines">지금 브랜드 사이트 주소를 남겨주시면 가맹 문의가 왜 오지 않는지 확인해 드립니다.</p>
+    <form class="biz-quick" data-quick="diagnosis.html">
+      <div class="biz-quick__f">
+        <label class="sr-only" for="fq-site2">브랜드 사이트 주소</label>
+        <input id="fq-site2" name="site" type="text" placeholder="브랜드 사이트 주소 (예: brand.co.kr)" autocomplete="url">
+      </div>
+      <button class="btn btn--brand" type="submit">무료 진단 신청하기</button>
+    </form>
   </div>
 </section>
 
