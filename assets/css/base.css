@@ -328,6 +328,87 @@ h1, h2, h3, h4, p, figure { margin: 0; }
 .bighead__right { width: 100%; max-width: 448px; }
 .bighead__right .bighead__lead { max-width: none; }
 .bighead__ko { font-size: var(--t-lead); font-weight: 700; line-height: 1.45; letter-spacing: -.01em; margin-bottom: 14px; }
+/* 검색·AI 노출 목업 — 2026-08-15. 대표님 참고(web.haoc.co.kr)의 '검색 결과 / AI 답변' 카드를
+   우리 토큰으로 다시 만든 것. 캡처 이미지가 아니라 CSS 로 그린다 —
+   ⚠ 실제 검색 결과 스크린샷을 쓰면 만들어 낸 성과 증거가 된다. 여기 예시는 전부 ○○·△△ 로
+     가려 둔 가상의 화면이고, 아래 주석에도 예시임을 반드시 적는다.
+   비율·간격은 .panels 와 같은 2열 그리드를 따른다. */
+.mockrow { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.mockrow--rev .mockrow__txt { order: 2; }
+.mock {
+  border: 1px solid var(--border); border-radius: var(--r-card);
+  padding: 22px 22px 26px; background: color-mix(in srgb, var(--fg) 4%, transparent);
+}
+.mock__head { display: flex; justify-content: space-between; align-items: baseline;
+  font-size: var(--t-sm); font-weight: 700; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.mock__head i { font-style: normal; font-weight: 500; letter-spacing: .1em; color: var(--muted); }
+.mock__q { margin-top: 18px; padding: 13px 16px; border: 1px solid var(--border); border-radius: 999px;
+  font-size: var(--t-sm); color: var(--muted); }
+.mock__row { margin-top: 16px; padding: 14px 16px; border-radius: 8px; }
+.mock__row--top { background: color-mix(in srgb, var(--brand) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 45%, transparent); }
+.mock__rank { font-size: 12px; font-weight: 700; color: var(--brand); letter-spacing: .08em; }
+.mock__t { margin-top: 5px; font-size: var(--t-sm); font-weight: 700; line-height: 1.5; }
+.mock__row--top .mock__t { color: var(--brand); }
+.mock__u { margin-top: 5px; font-size: 12px; color: var(--muted); word-break: break-all; }
+.mock__ask { margin-top: 18px; margin-left: auto; width: fit-content; max-width: 88%;
+  padding: 12px 16px; border-radius: 999px; background: var(--brand); color: #fff;
+  font-size: var(--t-sm); font-weight: 600; }
+.mock__ans { margin-top: 14px; padding: 16px; border-radius: 8px;
+  background: color-mix(in srgb, var(--fg) 7%, transparent);
+  font-size: var(--t-sm); line-height: 1.7; }
+.mock__ans b { color: var(--brand); }
+.mock__src { margin-top: 12px; font-size: 12px; color: var(--muted); }
+.invert .mock, .invert .mock__q, .invert .mock__head { border-color: color-mix(in srgb, var(--bg) 20%, transparent); }
+.invert .mock { background: color-mix(in srgb, var(--bg) 4%, transparent); }
+.invert .mock__head i, .invert .mock__q, .invert .mock__u, .invert .mock__src { color: color-mix(in srgb, var(--bg) 55%, transparent); }
+.invert .mock__ans { background: color-mix(in srgb, var(--bg) 6%, transparent); }
+@media (max-width: 900px) {
+  .mockrow { grid-template-columns: 1fr; gap: 36px; }
+  .mockrow--rev .mockrow__txt { order: 0; }
+}
+
+/* 노출 → 결과 등식 — 2026-08-15 세영(대표님 참고 이미지).
+   목업이 '이렇게 노출된다' 까지만 말하고 끝나 "그래서 뭐가 좋아지나" 가 비어 있었다.
+   위의 두 목업(검색 상위노출 / AI 답변 노출)을 그대로 받아 문의로 잇는 자리다.
+   ⚠ 수치·퍼센트는 넣지 않는다. 근거가 없고, 넣는 순간 성과 보장이 된다. */
+.eqrow { display: flex; align-items: stretch; justify-content: center; gap: 18px; flex-wrap: wrap; }
+.eqbox { flex: 1 1 220px; max-width: 300px; padding: 30px 24px; text-align: center;
+  border: 1px solid var(--border); border-radius: var(--r-card); }
+.eqbox--out { background: var(--brand); border-color: var(--brand); }
+.eqbox__t { font-size: var(--t-lead); font-weight: 700; }
+.eqbox__d { margin-top: 8px; font-size: var(--t-sm); color: var(--muted); }
+.eqbox--out .eqbox__t, .eqbox--out .eqbox__d { color: #fff; }
+.eqbox--out .eqbox__d { color: rgba(255,255,255,.82); }
+.eqop { align-self: center; font-size: 22px; font-weight: 700; color: var(--muted); }
+.invert .eqbox { border-color: color-mix(in srgb, var(--bg) 22%, transparent); }
+.invert .eqbox__d, .invert .eqop { color: color-mix(in srgb, var(--bg) 55%, transparent); }
+.invert .eqbox--out { border-color: var(--brand); }
+.invert .eqbox--out .eqbox__t { color: #fff; }
+@media (max-width: 760px) { .eqbox { max-width: none; } .eqop { width: 100%; } }
+
+/* 업종 포트폴리오 — 이미지 들어갈 자리 (2026-08-15 세영).
+   자료를 아직 못 찾아 못 넣는 것뿐이므로 '자리만' 비워 둔다.
+   ⚠ 공개 동의 같은 단서는 붙이지 않는다. 가상의 고객사명·가짜 캡처도 만들지 않는다.
+   ⚠ 비율은 portfolio.html 의 .work__thumb 와 같은 1:1 이다. 사진이 들어오면
+     이 자리에 background-image 만 얹으면 되고, 나중에 .work 그리드로 바꿔도 어긋나지 않는다. */
+.pfslot { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.pfslot__item { width: 100%; }
+.pfslot__thumb {
+  position: relative; width: 100%; padding-bottom: 100%;
+  border: 1px dashed var(--border); border-radius: var(--r-card);
+  background-size: cover; background-position: center top;
+}
+.pfslot__thumb::after {
+  content: attr(data-label); position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--t-eyebrow); letter-spacing: .1em; color: var(--muted);
+}
+.pfslot__cap { margin-top: 16px; font-size: var(--t-sm); color: var(--muted); }
+.invert .pfslot__thumb { border-color: color-mix(in srgb, var(--bg) 26%, transparent); }
+.invert .pfslot__thumb::after, .invert .pfslot__cap { color: color-mix(in srgb, var(--bg) 50%, transparent); }
+@media (max-width: 860px) { .pfslot { grid-template-columns: 1fr; gap: 16px; } }
+
 /* 마지막 CTA 의 리드 한 줄 — 지금까지 한 문장뿐이라 무엇을 하라는 건지가 얇았다. */
 .oneline__lead { margin: 20px auto 0; max-width: 640px; font-size: var(--t-lead); line-height: 1.6; color: var(--muted); }
 
