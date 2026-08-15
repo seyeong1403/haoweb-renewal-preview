@@ -321,6 +321,15 @@ h1, h2, h3, h4, p, figure { margin: 0; }
   font-weight: 700; letter-spacing: -.035em; white-space: nowrap;
 }
 .bighead__lead { width: 100%; max-width: 448px; font-size: var(--t-body); line-height: 1.5; }
+/* 영문 대제목 옆 국문 제목 — 2026-08-15.
+   Work·How We Build 처럼 제목이 영문 한 단어인 섹션에 국문 타이틀을 주기 위한 자리다.
+   ⚠ 영문 제목 안에 넣을 수 없다 — site.js 의 splitLines()/splitChars() 가 innerHTML 을
+     textContent 로 납작하게 만들어 중첩 태그를 지운다(h1 국문화 때와 같은 함정). */
+.bighead__right { width: 100%; max-width: 448px; }
+.bighead__right .bighead__lead { max-width: none; }
+.bighead__ko { font-size: var(--t-lead); font-weight: 700; line-height: 1.45; letter-spacing: -.01em; margin-bottom: 14px; }
+/* 마지막 CTA 의 리드 한 줄 — 지금까지 한 문장뿐이라 무엇을 하라는 건지가 얇았다. */
+.oneline__lead { margin: 20px auto 0; max-width: 640px; font-size: var(--t-lead); line-height: 1.6; color: var(--muted); }
 
 /* 중앙 정렬 문장 블록 (레퍼런스 intro) */
 /* 히어로 다음 핵심 문장 — 페이지의 두 번째 헤드라인 역할인데 일반 본문처럼 약했다.
@@ -563,6 +572,17 @@ h1, h2, h3, h4, p, figure { margin: 0; }
 }
 .field textarea { min-height: 120px; resize: vertical; }
 .form__note { margin-top: 28px; font-size: 12px; line-height: 1.7; color: var(--muted); }
+/* 접수 준비 중 고지 — 2026-08-15 신설.
+   ⚠ 지금까지 "온라인 접수는 준비 중입니다" 안내가 **제출 버튼을 누른 뒤에야** 나타났다.
+     방문자는 업종·목표·연락처·동의까지 다 채우고 나서야 전화하라는 말을 봤다.
+     그래서 폼 앞으로 끌어냈다. .form__note(12px 흐림)로는 눈에 안 들어와 별도 스타일을 둔다.
+   ⚠ 온라인 접수가 열리면 이 스타일과 세 페이지의 .form__alert,
+     site.js 의 initForm() 을 **함께** 걷어낼 것. 한 곳만 지우면 앞뒤가 어긋난다. */
+.form__alert {
+  margin-bottom: 32px; padding: 20px 22px; font-size: var(--t-sm); line-height: 1.7;
+  border: 1px solid var(--border); border-left: 3px solid var(--brand); border-radius: var(--r-btn);
+}
+.invert .form__alert { border-color: color-mix(in srgb, var(--bg) 22%, transparent); border-left-color: var(--brand); }
 
 /* ---------- 14. 푸터 ----------
    soroweb.co.kr 의 푸터 효과를 이식했다 (2026-08-12 세영 지시).

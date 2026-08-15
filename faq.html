@@ -147,9 +147,9 @@
     </div>
     <div data-faq>
       <div class="qcats">
-        <button class="chip" type="button" data-cat="all" aria-pressed="true">전체 <b>16</b></button>
+        <button class="chip" type="button" data-cat="all" aria-pressed="true">전체 <b>18</b></button>
         <button class="chip" type="button" data-cat="start" aria-pressed="false">시작과 범위 <b>3</b></button>
-        <button class="chip" type="button" data-cat="cost" aria-pressed="false">비용과 기간 <b>2</b></button>
+        <button class="chip" type="button" data-cat="cost" aria-pressed="false">비용과 기간 <b>4</b></button>
         <button class="chip" type="button" data-cat="design" aria-pressed="false">디자인과 수정 <b>2</b></button>
         <button class="chip" type="button" data-cat="domain" aria-pressed="false">도메인·호스팅과 운영 <b>2</b></button>
         <button class="chip" type="button" data-cat="migrate" aria-pressed="false">기존 홈페이지 이전 <b>2</b></button>
@@ -172,6 +172,18 @@
         <details class="faq__item" data-cat="cost">
           <summary><span class="faq__q" aria-hidden="true">Q</span>제작비는 얼마인가요?<i aria-hidden="true"></i></summary>
           <div class="faq__a"><p>5—8페이지는 250만원, 10—15페이지는 600만원부터입니다(부가세 별도). 촬영·원고 범위에 따라 올라가며, 전체 기준 금액은 제작비 안내에 있습니다.</p></div>
+        </details>
+        <!-- 결제·취소 — 2026-08-15 세영 확인. 수백만 원을 쓰는 결정인데 돈을 어떻게
+             주고받는지가 사이트 어디에도 없었다(계약금·잔금·환불 0건).
+             ⚠ 이 두 답은 **실제 계약서와 같아야 한다.** 계약 조건이 바뀌면 여기도 함께 고칠 것.
+             ⚠ 금액과 달리 임의로 적으면 안 되는 항목이다 — 분쟁의 근거가 된다. -->
+        <details class="faq__item" data-cat="cost">
+          <summary><span class="faq__q" aria-hidden="true">Q</span>제작비는 어떻게 나눠 내나요?<i aria-hidden="true"></i></summary>
+          <div class="faq__a"><p>계약할 때 절반, 오픈 전에 나머지 절반을 받습니다. 확정 금액과 지급 시점은 계약서에 적고 시작합니다.</p></div>
+        </details>
+        <details class="faq__item" data-cat="cost">
+          <summary><span class="faq__q" aria-hidden="true">Q</span>중간에 멈추게 되면 어떻게 되나요?<i aria-hidden="true"></i></summary>
+          <div class="faq__a"><p>진행된 단계까지 정산합니다. 어디까지 진행됐는지는 단계마다 남긴 문서로 확인하므로 다툴 일이 적습니다.</p></div>
         </details>
         <details class="faq__item" data-cat="cost">
           <summary><span class="faq__q" aria-hidden="true">Q</span>제작 기간은 얼마나 걸리나요?<i aria-hidden="true"></i></summary>
@@ -224,10 +236,10 @@
       </div>
     </div>
     <div class="btns" style="margin-top:56px">
-      <a class="btn" href="price-guide.html">제작비 결정 기준</a>
+      <a class="btn" href="price-guide.html">제작비 안내 보기</a>
       <a class="btn" href="maintenance.html">유지보수 안내</a>
       <a class="btn" href="search-ai.html">AI 가시성</a>
-      <a class="btn" href="free-proposal.html">무료 홈페이지 제안</a>
+      <a class="btn" href="free-proposal.html">무료 홈페이지 제안받기</a>
     </div>
   </div>
 </section>
