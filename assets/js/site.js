@@ -694,6 +694,27 @@
     });
   }
 
+  /* 디자인센터 포트폴리오 필터 (graphic-design). FAQ 칩과 같은 방식이고,
+     항목이 152개라 숨김은 hidden 속성으로만 한다 — 지우거나 다시 그리지 않는다.
+     JS 가 없거나 실패해도 전부 보이는 상태가 기본값이다. */
+  function initDesignWork() {
+    var wrap = document.querySelector('[data-dwork]');
+    if (!wrap) return;
+    var chips = [].slice.call(wrap.querySelectorAll('.chip[data-cat]'));
+    var items = [].slice.call(wrap.querySelectorAll('.dwork__item'));
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var cat = chip.getAttribute('data-cat');
+        chips.forEach(function (c) {
+          c.setAttribute('aria-pressed', c === chip ? 'true' : 'false');
+        });
+        items.forEach(function (it) {
+          it.hidden = !(cat === 'all' || it.getAttribute('data-cat') === cat);
+        });
+      });
+    });
+  }
+
   function start() {
     initNav();
     initReveal();
@@ -709,6 +730,7 @@
     initQuick();
     initWork();
     initWorkView();
+    initDesignWork();
     initFaq();
     initViz();
   }
